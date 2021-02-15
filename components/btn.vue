@@ -2,9 +2,13 @@
 
 </template>
 
-<script>
-export default {
-	name: 'baseBtn'
+<script lang='ts'>
+import Vue from 'vue';
+import Component from "vue-class-component";
+
+@Component
+export default class btn extends Vue {
+
 }
 </script>
 
