@@ -11,15 +11,20 @@
 		</v-img>
 
 		<!-- 본문 -->
-		<div v-if='activeTab === 0'>
+		<div v-show='activeTab === 0'>
 			<v-img :src='event1Img1'></v-img>
 			<v-img :src='event1Img2'></v-img>
-			<v-img :src='event1Img3'></v-img>
+			<v-img :src='event1Img3'>
+				<div>
+					<img src='~/assets/images/event1/ico/ev1_ico_banner.png'>
+				</div>
+
+			</v-img>
 			<v-img :src='event1Img4'></v-img>
 			<v-img :src='event1Img5'></v-img>
 			<v-img :src='event1FootImg'></v-img>
 		</div>
-		<div v-else-if='activeTab === 1'>
+		<div v-show='activeTab === 1'>
 			<v-img :src='event2Img1' ></v-img>
 			<v-img :src='event2Img2' ></v-img>
 			<v-img :src='event2Img3' ></v-img>
