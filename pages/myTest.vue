@@ -13,22 +13,25 @@
 		<!-- 본문 -->
 		<div v-show='activeTab === 0'>
 			<v-img :src='event1Img1'></v-img>
-			<v-img :src='event1Img2'></v-img>
 			<v-img :src='event1Img3'>
 				<div>
 					<img src='~/assets/images/event1/ico/ev1_ico_banner.png'>
 				</div>
-
 			</v-img>
-			<v-img :src='event1Img4'></v-img>
-			<v-img :src='event1Img5'></v-img>
+			<v-img :src='event1Img5'>
+
+				<btn btn-type='more-btn'></btn>
+				<btn btn-type='detail-btn'></btn>
+			</v-img>
 			<v-img :src='event1FootImg'></v-img>
 		</div>
 		<div v-show='activeTab === 1'>
 			<v-img :src='event2Img1' ></v-img>
-			<v-img :src='event2Img2' ></v-img>
-			<v-img :src='event2Img3' ></v-img>
-			<v-img :src='event2Img4' ></v-img>
+			<v-img :src='event2Img4' >
+				<div>
+					<img src='~/assets/images/event2/ico/ev2_ico_banner.png'>
+				</div>
+			</v-img>
 			<v-img :src='event2FootImg'></v-img>
 		</div>
 	</div>
@@ -56,16 +59,12 @@ export default class myTest extends Vue {
 
 	event1TabImg: string = require('~/assets/images/event1/ev1_tmp1.jpg')
 	event1Img1: string = require('~/assets/images/event1/ev1_kv.jpg')
-	event1Img2: string = require('~/assets/images/event1/ev1_step.jpg')
 	event1Img3: string = require('~/assets/images/event1/ev1_tmp_banner.jpg')
-	event1Img4: string = require('~/assets/images/event1/ev1_prize.jpg')
 	event1Img5: string = require('~/assets/images/event1/ev1_join.jpg')
 	event1FootImg = require('~/assets/images/event1/ev1_ft.jpg')
 
 	event2TabImg: string = require('~/assets/images/event2/ev2_tmp2.jpg')
 	event2Img1: string = require('~/assets/images/event2/ev2_kv.jpg')
-	event2Img2: string = require('~/assets/images/event2/ev2_step.jpg')
-	event2Img3: string = require('~/assets/images/event2/ev2_tmp1.jpg')
 	event2Img4: string = require('~/assets/images/event2/ev2_tmp_banner.jpg')
 	event2FootImg = require('~/assets/images/event2/ev2_ft.jpg')
 
