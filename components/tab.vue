@@ -1,6 +1,6 @@
 <template>
-	<div class='tap-wrap'>
-		<div class='tab'>
+	<div>
+		<ul class='tab'>
 			<li v-for="(item, key) of items" :key="key">
 				<nuxt-link v-if="active === key" class="on" @click.native="$emit('input', key)" to="">
 					{{ item.name }}
@@ -9,7 +9,7 @@
 					{{ item.name }}
 				</nuxt-link>
 			</li>
-		</div>
+		</ul>
 	</div>
 </template>
 
@@ -32,13 +32,21 @@ export default class tab<T> extends Vue {
 </script>
 
 <style lang='scss' scoped>
-	.tap-wrap {
-		display:flex;
+	li {list-style: none;}
+	.tab {
+		position: absolute;
+		left: 0;
+		right: 0;
+		display: flex; justify-content: center; align-items: center;
 
-		.tab {
-			position: relative;
-			display: inline-block;
-			margin: 0 auto;
+		li {
+			width: 50%; height: 60px;
+
+			a {
+				display: block;
+				height: 100%;
+				font-size: 0;
+			}
 		}
 	}
 </style>
