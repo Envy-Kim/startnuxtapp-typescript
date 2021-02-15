@@ -1,9 +1,15 @@
 <template>
-	<div>
-		<li v-for="(item, key) of items" :key="key">
-			<nuxt-link v-if="active === key" class="on" @click.native="$emit('input', key)" to="">{{item.name}}</nuxt-link>
-			<nuxt-link v-else @click.native="$emit('input', key)" to="">{{ item.name }}</nuxt-link>
-		</li>
+	<div class='tap-wrap'>
+		<div class='tab'>
+			<li v-for="(item, key) of items" :key="key">
+				<nuxt-link v-if="active === key" class="on" @click.native="$emit('input', key)" to="">
+					{{ item.name }}
+				</nuxt-link>
+				<nuxt-link v-else @click.native="$emit('input', key)" to="">
+					{{ item.name }}
+				</nuxt-link>
+			</li>
+		</div>
 	</div>
 </template>
 
@@ -25,6 +31,14 @@ export default class tab<T> extends Vue {
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
+	.tap-wrap {
+		display:flex;
 
+		.tab {
+			position: relative;
+			display: inline-block;
+			margin: 0 auto;
+		}
+	}
 </style>
