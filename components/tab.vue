@@ -2,10 +2,7 @@
 	<div>
 		<ul class='tab'>
 			<li v-for="(item, key) of items" :key="key">
-				<nuxt-link v-if="active === key" class="on" @click.native="$emit('input', key)" to="">
-					{{ item.name }}
-				</nuxt-link>
-				<nuxt-link v-else @click.native="$emit('input', key)" to="">
+				<nuxt-link :class="(active === key) ? classOn : classOff " @click.native="$emit('input', key)" to="">
 					{{ item.name }}
 				</nuxt-link>
 			</li>
@@ -22,6 +19,9 @@ import Component from "vue-class-component";
 export default class tab<T> extends Vue {
 	@Prop({default: []}) items?: T[]
 	@Prop() active!: number
+
+	classOn: string = 'on'
+	classOff: string = ''
 
 	mounted() {
 		console.log(this.items)

@@ -6,7 +6,7 @@
 		<div v-if="btnType === 'more-btn'" :class='btnType'>
 			<nuxt-link to="">
 				<img src='~/assets/images/common/ico/ico_tmp02.png'></img>
-				<span>인증점 더보기</span>
+				<span><slot/></span>
 			</nuxt-link>
 		</div>
 
@@ -23,14 +23,15 @@ import { Prop } from 'vue-property-decorator'
 
 @Component
 export default class btn extends Vue {
-	@Prop({default: 'default'}) btnType: string
+	@Prop({default: 'default'}) btnType?:            string;
 
 }
 </script>
 
 <style lang='scss' scoped>
 	.more-btn {
-		position: absolute;
+		position: relative;
+		left: -200px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -42,6 +43,12 @@ export default class btn extends Vue {
 		font-weight: bold;
 		background: #fff;
 		box-shadow: 3px 3px 3px 3px #e8c5c9;
+		text-align: center;
+		padding-top: 20px;
 
+		a {
+			width: 100%;
+			height: 100%;
+		}
 	}
 </style>

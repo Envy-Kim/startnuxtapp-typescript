@@ -1,59 +1,33 @@
 <template>
 	<div class='inner'>
 		<!-- tab -->
-		<v-img :src='(activeTab === 0 ? event1TabImg : event2TabImg)'>
-			<tab
+			<tabtest
 				:items="tabItems"
 				:active="activeTab"
 				@input='changeActiveTab'
 			>
-			</tab>
-		</v-img>
-
-		<!-- 본문 -->
-		<div v-show='activeTab === 0'>
-			<v-img :src='event1Img1'></v-img>
-			<v-img :src='event1Img3'>
-				<div>
-					<img src='~/assets/images/event1/ico/ev1_ico_banner.png'>
-				</div>
-			</v-img>
-			<v-img :src='event1Img5'>
-
-				<btn btn-type='more-btn'></btn>
-				<btn btn-type='detail-btn'></btn>
-			</v-img>
-			<v-img :src='event1FootImg'></v-img>
-		</div>
-		<div v-show='activeTab === 1'>
-			<v-img :src='event2Img1' ></v-img>
-			<v-img :src='event2Img4' >
-				<div>
-					<img src='~/assets/images/event2/ico/ev2_ico_banner.png'>
-				</div>
-			</v-img>
-			<v-img :src='event2FootImg'></v-img>
-		</div>
+			</tabtest>
 	</div>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
-import Vuetify from 'vuetify'
 import Component from "vue-class-component";
-
-Vue.use(Vuetify)
 
 @Component
 export default class myTest extends Vue {
-	activeTab: number = 0
+	activeTab: string = 'event1'
 
 	tabItems = [
 		{
 			name: 'event1',
+			sectionNum: 2,
+			className: 'event1-class'
 		},
 		{
 			name: 'event2',
+			sectionNum: 3,
+			className: 'event2-class'
 		}
 	]
 
@@ -69,7 +43,7 @@ export default class myTest extends Vue {
 	event2FootImg = require('~/assets/images/event2/ev2_ft.jpg')
 
 
-	changeActiveTab(value: number) {
+	changeActiveTab(value: string) {
 		console.log(value)
 		this.activeTab = value
 	}

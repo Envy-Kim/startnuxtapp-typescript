@@ -1,10 +1,14 @@
 <template>
 	<div class='inner'>
 		<!-- tab -->
+		<!-- v-img : vuetify의 이미 만들어진 컴포넌트 -->
 		<v-img :src='(activeTab === 0 ? event1TabImg : event2TabImg)'>
+			<!-- v-bind를 이용한 동적인 prop 전달 -->
+			<!-- @{이벤트명} 을 이용하여 자식 컴포넌트에서 emit한 이벤트에 대한 처리를 설정 -->
 			<tab
 				:items="tabItems"
 				:active="activeTab"
+				:active2="activeTab2"
 				@input='changeActiveTab'
 			>
 			</tab>
@@ -18,7 +22,6 @@
 				<div class='banner-img'>
 					<img src='~/assets/images/event1/ico/ev1_ico_banner.png'>
 				</div>
-				<btn btn-type='more-btn'></btn>
 			</v-img>
 			<v-img :src='event1Img4'></v-img>
 			<v-img :src='event1Img5'></v-img>
@@ -29,7 +32,7 @@
 			<v-img :src='event2Img2'></v-img>
 			<v-img :src='event2Img3'></v-img>
 			<v-img :src='event2Img33'>
-				<btn btn-type='more-btn'></btn>
+				<btn btnType='more-btn' >인증점 더보기</btn>
 			</v-img>
 			<v-img :src='event2Img4'>
 				<div class='banner-img'>
@@ -43,14 +46,13 @@
 
 <script lang='ts'>
 import Vue from 'vue';
-import Vuetify from 'vuetify'
 import Component from "vue-class-component";
 
-Vue.use(Vuetify)
-
+// @Component 데코레이터는 클래스가 Vue 컴포넌트임을 나타냅니다
 @Component
 export default class index extends Vue {
 	activeTab: number = 1
+	activeTab2: string = 'event1'
 
 	tabItems = [
 		{
