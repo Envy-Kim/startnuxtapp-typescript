@@ -1,12 +1,12 @@
 <template>
 	<div class='inner'>
 		<!-- tab -->
-			<tabtest
-				:items="tabItems"
-				:active="activeTab"
-				@input='changeActiveTab'
-			>
-			</tabtest>
+		<tab
+			:items="tabItems"
+			:active="activeTab"
+			@input='changeActiveTab'
+		>
+		</tab>
 	</div>
 </template>
 
@@ -14,33 +14,40 @@
 import Vue from 'vue';
 import Component from "vue-class-component";
 
-@Component
+@Component({
+	layout: 'event/index'
+})
 export default class myTest extends Vue {
+
 	activeTab: string = 'event1'
 
 	tabItems = [
 		{
 			name: 'event1',
 			sectionNum: 2,
-			className: 'event1-class'
+			className: 'event1-class',
+			subTitle: '한우 먹고!',
+			subTitlePoint: '한우 인증 GO~!'
 		},
 		{
 			name: 'event2',
 			sectionNum: 3,
-			className: 'event2-class'
+			className: 'event2-class',
+			subTitle: '최애 한우인증점 Pick!',
+			subTitlePoint: ''
 		}
 	]
 
-	event1TabImg: string = require('~/assets/images/event1/ev1_tmp1.jpg')
-	event1Img1: string = require('~/assets/images/event1/ev1_kv.jpg')
-	event1Img3: string = require('~/assets/images/event1/ev1_tmp_banner.jpg')
-	event1Img5: string = require('~/assets/images/event1/ev1_join.jpg')
-	event1FootImg = require('~/assets/images/event1/ev1_ft.jpg')
+	event1TabImg: string = require('~/assets/images_bak/event1/ev1_tmp1.jpg')
+	event1Img1: string = require('~/assets/images_bak/event1/ev1_kv.jpg')
+	event1Img3: string = require('~/assets/images_bak/event1/ev1_tmp_banner.jpg')
+	event1Img5: string = require('~/assets/images_bak/event1/ev1_join.jpg')
+	event1FootImg = require('~/assets/images_bak/event1/ev1_ft.jpg')
 
-	event2TabImg: string = require('~/assets/images/event2/ev2_tmp2.jpg')
-	event2Img1: string = require('~/assets/images/event2/ev2_kv.jpg')
-	event2Img4: string = require('~/assets/images/event2/ev2_tmp_banner.jpg')
-	event2FootImg = require('~/assets/images/event2/ev2_ft.jpg')
+	event2TabImg: string = require('~/assets/images_bak/event2/ev2_tmp2.jpg')
+	event2Img1: string = require('~/assets/images_bak/event2/ev2_kv.jpg')
+	event2Img4: string = require('~/assets/images_bak/event2/ev2_tmp_banner.jpg')
+	event2FootImg = require('~/assets/images_bak/event2/ev2_ft.jpg')
 
 
 	changeActiveTab(value: string) {

@@ -1,20 +1,12 @@
 <template>
 	<div>
-		<div class='tabs'>
-			<ul class='tab' >
-				<li v-for="item of items">
-					<nuxt-link :class="{ 'on': active === item.name }" @click.native="$emit('input', item.name)" to="">
-						{{ item.name }}
-					</nuxt-link>
-				</li>
-			</ul>
-		</div>
-
-		<div class='tab-item-group'>
-			<div v-for="(item) of items" class='tab-item'>
-				<tab-item v-if="(item.name == active)" :item='item'></tab-item>
-			</div>
-		</div>
+		<ul class='tab'>
+			<li v-for="(item, key) of items" :key="key">
+				<nuxt-link :class="(active === key) ? classOn : classOff " @click.native="$emit('input', key)" to="">
+					{{ item.name }}
+				</nuxt-link>
+			</li>
+		</ul>
 	</div>
 </template>
 
@@ -24,13 +16,18 @@ import { Prop } from 'vue-property-decorator'
 import Component from "vue-class-component";
 
 @Component
-export default class tabtest extends Vue {
+export default class oldTab extends Vue {
 	@Prop({default: []}) items?: Object
-	@Prop() active!: string
+	@Prop() active!: number
+
+	classOn: string = 'on'
+	classOff: string = ''
 
 	mounted() {
 		console.log(this.items)
 	}
+
+
 }
 </script>
 
@@ -48,7 +45,7 @@ export default class tabtest extends Vue {
 			a {
 				display: block;
 				height: 100%;
-				//font-size: 0;
+				font-size: 0;
 			}
 		}
 	}

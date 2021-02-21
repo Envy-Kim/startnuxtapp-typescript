@@ -5,7 +5,7 @@
 		</div>
 		<div v-if="btnType === 'more-btn'" :class='btnType'>
 			<nuxt-link to="">
-				<img src='~/assets/images/common/ico/ico_tmp02.png'></img>
+				<img src='~/assets/images_bak/common/ico/ico_tmp02.png'></img>
 				<span><slot/></span>
 			</nuxt-link>
 		</div>

@@ -49,12 +49,18 @@ export default {
 	/**
 	 * 글로벌 CSS & SCSS 로드
 	 */
-	css: [],
+	css: [
+		'@/assets/font/font.css',
+		'@/assets/css/reset.css',
+		'@/assets/scss/style.scss'
+	],
 
 	/**
 	 * 글로벌 플로그인 로드
 	 */
-	plugins: [],
+	plugins: [
+		{ src: '@/plugins/swiper.ts', mode: 'client' }
+	],
 
 	components: true,
 
@@ -99,5 +105,9 @@ export default {
 		}
 	},
 
-	build: {}
+	build: {
+		transpile: [
+			'swiper'
+		]
+	}
 }
