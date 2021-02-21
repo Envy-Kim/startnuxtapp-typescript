@@ -6,9 +6,6 @@
 	<transition name="modal" appear>
 
 	</transition>
-	<div>
-		popup
-	</div>
 </template>
 
 <script lang='ts'>

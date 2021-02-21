@@ -4,18 +4,18 @@
 			<ul class='tab' >
 				<li v-for="item of items"
 					:class="{ 'on': active === item.name }"
-					@click="$emit('input', item.name)"
+					@click="changeItem(item)"
 				>
-					<i class="point">{{ item.name }}. </i>&nbsp;{{ item.subTitle }}&nbsp;
+					{{ item.title }}
+					<i class="point">{{ item.titlePoint }}</i>
+					{{ item.subTitle }}
 					<i class="point" v-if="item.subTitlePoint">{{ item.subTitlePoint }}</i>
 				</li>
 			</ul>
 		</div>
 
-		<div class='tab-item-group'>
-			<div v-for="(item) of items" class='tab-item'>
-				<tab-item v-if="(item.name == active)" :item='item'></tab-item>
-			</div>
+		<div class='tab-item'>
+			<tab-item :contents='activeItem.contents'></tab-item>
 		</div>
 	</div>
 </template>
@@ -30,8 +30,15 @@ export default class tab extends Vue {
 	@Prop({default: []}) items?: Object
 	@Prop() active!: string
 
+	activeItem: Object = this.items[0]
+
 	mounted() {
 		console.log(this.items)
+	}
+
+	changeItem(item) {
+		this.activeItem = item
+		this.$emit('input', item.name)
 	}
 }
 </script>
