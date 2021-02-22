@@ -6,7 +6,69 @@
 			:active="activeTab"
 			@input='changeActiveTab'
 		>
+			<tab-item :items='tabItems' :active="activeTab">
+				<!-- event1 -->
+				<template #event1_1>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_kv.jpg')">
+					</event-section>
+				</template>
+				<template #event1_2>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_step.jpg')">
+					</event-section>
+				</template>
+				<template #event1_3>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')">
+						<img :src="require('~/assets/images_aj/event1/ico/ev1_ico_banner.png')"
+							 class="ico-banner" />
+						<btn btn-type='line-type'
+							 colorType='color-yellow'
+							 width='235px'
+							 left='420px'
+							 bottom='16px'
+						>내 주변 한우 인증점 보러가기</btn>
+					</event-section>
+				</template>
+				<template #event1_4>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_prize.jpg')">
+					</event-section>
+				</template>
+				<template #event1_5>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_join.jpg')">
+						<btn btn-type='bg-type'
+							 funcType='btn-entry'
+							 width='360px'
+							 left='330px'
+							 bottom='100px'
+							 @click.native='test'
+						>응모하기
+						</btn>
+					</event-section>
+				</template>
 
+				<!-- event2 -->
+				<template #event2_1>
+					<event-section :src="require('~/assets/images_aj/event2/ev2_kv.jpg')">
+					</event-section>
+				</template>
+				<template #event2_2>
+					<event-section :src="require('~/assets/images_aj/event2/ev2_step.jpg')">
+					</event-section>
+				</template>
+				<template #event2_3>
+					<event-section :src="require('~/assets/images_aj/event2/ev2_tmp1.jpg')">
+					</event-section>
+				</template>
+				<template #event2_4>
+					<event-section :src="require('~/assets/images_aj/event2/ev2_tmp_banner.jpg')">
+						<btn btn-type='line-type'
+							 colorType='color-pink-white'
+							 width='235px'
+							 left='370px'
+							 bottom='16px'
+						>투표 현황 보러가기</btn>
+					</event-section>
+				</template>
+			</tab-item>
 		</tab>
 	</div>
 </template>
@@ -25,107 +87,31 @@ export default class myTest extends Vue {
 	tabItems: object = [
 		{
 			name: 'event1',
-			className: 'event1-class',
-			titleType: 'text',
+			tabType: 'text',
 			title: '',
 			titlePoint: 'event1.',
 			subTitle: '한우 먹고!',
 			subTitlePoint: '한우 인증 GO~!',
 			contents: [
-				{
-					name: 'sec1',
-					backImage: require('~/assets/images_aj/event1/ev1_kv.jpg'),
-					class: '',
-					btnYn: false,
-				},
-				{
-					name: 'sec2',
-					backImage: require('~/assets/images_aj/event1/ev1_step.jpg'),
-					class: '',
-					btnYn: false,
-				},
-				{
-					name: 'sec3',
-					backImage: require('~/assets/images_aj/event1/ev1_tmp_banner.jpg'),
-					class: '',
-					btnYn: true,
-					left: '420px',
-					bottom: '16px',
-					btnType: "line-type",
-					colorType: "color-yellow",
-					width: "235px",
-					btnText: "내 주변 한우 인증점 보러가기",
-					subImgYn: true,
-					subImg: require('~/assets/images_aj/event1/ico/ev1_ico_banner.png'),
-					subImgClass: 'ico-banner',
-				},
-				{
-					name: 'sec4',
-					backImage: require('~/assets/images_aj/event1/ev1_prize.jpg'),
-					class: '',
-					btnYn: false,
-				},
-				{
-					name: 'sec5',
-					backImage: require('~/assets/images_aj/event1/ev1_join.jpg'),
-					class: '',
-					btnYn: true,
-					left: '330px',
-					bottom: '100px',
-					btnType: "bg-type",
-					funcType: "btn-entry",
-					width: "360px",
-					btnText: "응모하기"
-				}
+				{name: 'sec1'},
+				{name: 'sec2'},
+				{name: 'sec3'},
+				{name: 'sec4'},
+				{name: 'sec5'}
 			]
 		},
 		{
 			name: 'event2',
-			className: 'event2-class',
-			titleType: 'text',
+			tabType: 'text',
 			title: '',
 			titlePoint: 'event2.',
 			subTitle: '최애 한우인증점 Pick!',
 			subTitlePoint: '',
 			contents: [
-				{
-					name: 'sec1',
-					backImage: require('~/assets/images_aj/event2/ev2_kv.jpg'),
-					class: '',
-					btnYn: false,
-				},
-				{
-					name: 'sec2',
-					backImage: require('~/assets/images_aj/event2/ev2_step.jpg'),
-					class: '',
-					btnYn: false,
-				},
-				{
-					name: 'sec3',
-					backImage: require('~/assets/images_aj/event2/ev2_tmp1.jpg'),
-					class: '',
-					btnYn: false,
-				},
-				{
-					name: 'sec3',
-					backImage: 'none',
-					class: 'ev2-bg-color',
-				},
-				{
-					name: 'sec4',
-					backImage: require('~/assets/images_aj/event2/ev2_tmp_banner.jpg'),
-					class: '',
-					btnYn: true,
-					left: '370px',
-					bottom: '16px',
-					btnType: "line-type",
-					colorType: "color-pink-white",
-					width: "235px",
-					btnText: "투표 현황 보러가기",
-					subImgYn: true,
-					subImg: require('~/assets/images_aj/event2/ico/ev2_ico_banner.png'),
-					subImgClass: 'ico-banner',
-				}
+				{name: 'sec1'},
+				{name: 'sec2'},
+				{name: 'sec3'},
+				{name: 'sec4'}
 			]
 		}
 	]
@@ -134,6 +120,9 @@ export default class myTest extends Vue {
 	changeActiveTab(value: string) {
 		console.log(value)
 		this.activeTab = value
+	}
+	test() {
+		alert('test')
 	}
 }
 </script>

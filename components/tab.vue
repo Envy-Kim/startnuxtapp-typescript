@@ -14,12 +14,7 @@
 			</ul>
 		</div>
 
-		<div v-for="(item) of items" class='tab-item'>
-			<tab-item v-if="(item.name == active)"  :contents='item.contents'>
-
-
-			</tab-item>
-		</div>
+		<slot />
 	</div>
 </template>
 
@@ -30,7 +25,7 @@ import Component from "vue-class-component";
 
 @Component
 export default class tab extends Vue {
-	@Prop({default: []}) items?: any
+	@Prop({default: []}) items?: object
 	@Prop() active!: string
 
 	mounted() {

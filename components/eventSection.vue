@@ -17,11 +17,18 @@ export default class eventSection extends Vue {
 </script>
 
 <style lang="scss">
-	.ev-section {
-		position: relative;
-	}
 
-	.ev2-bg-color {
-		background-color: #ffeaec;
-	}
+.ico-banner {
+	position: absolute;
+	bottom: 0;
+	left: 230px;
+}
+
+.ev-section {
+	position: relative;
+}
+
+.ev2-bg-color {
+	background-color: #ffeaec;
+}
 </style>

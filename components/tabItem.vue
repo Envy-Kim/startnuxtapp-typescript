@@ -1,22 +1,10 @@
 <template>
 	<div>
-		<div v-for="section of contents">
-			<event-section :src="section.backImage" :secClass="section.class">
-				<img
-					v-if="section.subImgYn"
-					:src="section.subImg"
-					:class="section.subImgClass" />
-
-				<btn v-if="section.btnYn"
-					 :btn-type="section.btnType"
-					 :funcType="section.funcType"
-					 :colorType="section.colorType"
-					 :width="section.width"
-					 :height="section.height"
-					 :left="section.left"
-					 :bottom="section.bottom"
-				>{{ section.btnText }}</btn>
-			</event-section>
+		<div v-for="(item) of items">
+			<div v-for="(section, index) of item.contents">
+				<slot v-if="(item.name == active)"
+					  :name="item.name + '_' + (index+1)" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -27,7 +15,8 @@ import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class tabItem extends Vue {
-	@Prop({default: []}) contents!: object
+	@Prop({default: []}) items?: object
+	@Prop() active!: string
 }
 </script>
 
