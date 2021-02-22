@@ -21,18 +21,7 @@ export default class event extends Vue {
 
 	activeTab: string = 'event1'
 
-	event1Img1: string = require('~/assets/images_aj/event1/ev1_kv.jpg')
-	event1Img2: string = require('~/assets/images_aj/event1/ev1_step.jpg')
-	event1Img3: string = require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')
-	event1Img4: string = require('~/assets/images_aj/event1/ev1_prize.jpg')
-	event1Img5: string = require('~/assets/images_aj/event1/ev1_join.jpg')
-
-	event2Img1: string = require('~/assets/images_aj/event2/ev2_kv.jpg')
-	event2Img2: string = require('~/assets/images_aj/event2/ev2_step.jpg')
-	event2Img3: string = require('~/assets/images_aj/event2/ev2_tmp1.jpg')
-	event2Img4: string = require('~/assets/images_aj/event2/ev2_tmp_banner.jpg')
-
-	tabItems = [
+	tabItems: object = [
 		{
 			name: 'event1',
 			className: 'event1-class',
@@ -44,33 +33,48 @@ export default class event extends Vue {
 			contents: [
 				{
 					name: 'sec1',
-					backImage: this.event1Img1,
+					backImage: require('~/assets/images_aj/event1/ev1_kv.jpg'),
 					class: '',
 					btnYn: false,
 				},
 				{
 					name: 'sec2',
-					backImage: this.event1Img2,
+					backImage: require('~/assets/images_aj/event1/ev1_step.jpg'),
 					class: '',
 					btnYn: false,
 				},
 				{
 					name: 'sec3',
-					backImage: this.event1Img3,
+					backImage: require('~/assets/images_aj/event1/ev1_tmp_banner.jpg'),
 					class: '',
-					btnYn: false,
+					btnYn: true,
+					left: '420px',
+					bottom: '16px',
+					btnType: "line-type",
+					colorType: "color-yellow",
+					width: "235px",
+					btnText: "내 주변 한우 인증점 보러가기",
+					subImgYn: true,
+					subImg: require('~/assets/images_aj/event1/ico/ev1_ico_banner.png'),
+					subImgClass: 'ico-banner',
 				},
 				{
 					name: 'sec4',
-					backImage: this.event1Img4,
+					backImage: require('~/assets/images_aj/event1/ev1_prize.jpg'),
 					class: '',
 					btnYn: false,
 				},
 				{
 					name: 'sec5',
-					backImage: this.event1Img5,
+					backImage: require('~/assets/images_aj/event1/ev1_join.jpg'),
 					class: '',
-					btnYn: false,
+					btnYn: true,
+					left: '330px',
+					bottom: '100px',
+					btnType: "bg-type",
+					funcType: "btn-entry",
+					width: "360px",
+					btnText: "응모하기"
 				}
 			]
 		},
@@ -85,34 +89,41 @@ export default class event extends Vue {
 			contents: [
 				{
 					name: 'sec1',
-					backImage: this.event2Img1,
+					backImage: require('~/assets/images_aj/event2/ev2_kv.jpg'),
 					class: '',
 					btnYn: false,
 				},
 				{
 					name: 'sec2',
-					backImage: this.event2Img2,
+					backImage: require('~/assets/images_aj/event2/ev2_step.jpg'),
 					class: '',
 					btnYn: false,
 				},
 				{
 					name: 'sec3',
-					backImage: this.event2Img3,
+					backImage: require('~/assets/images_aj/event2/ev2_tmp1.jpg'),
 					class: '',
 					btnYn: false,
 				},
 				{
-					name: 'sec3_1',
+					name: 'sec3',
 					backImage: 'none',
 					class: 'ev2-bg-color',
-					btnYn: true,
-					btnType: 'more-btn',
 				},
 				{
 					name: 'sec4',
-					backImage: this.event2Img4,
+					backImage: require('~/assets/images_aj/event2/ev2_tmp_banner.jpg'),
 					class: '',
-					btnYn: false,
+					btnYn: true,
+					left: '370px',
+					bottom: '16px',
+					btnType: "line-type",
+					colorType: "color-pink-white",
+					width: "235px",
+					btnText: "투표 현황 보러가기",
+					subImgYn: true,
+					subImg: require('~/assets/images_aj/event2/ico/ev2_ico_banner.png'),
+					subImgClass: 'ico-banner',
 				}
 			]
 		}

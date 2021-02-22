@@ -15,7 +15,10 @@
 		</div>
 
 		<div v-for="(item) of items" class='tab-item'>
-			<tab-item v-if="(item.name == active)"  :contents='item.contents'></tab-item>
+			<tab-item v-if="(item.name == active)"  :contents='item.contents'>
+
+
+			</tab-item>
 		</div>
 	</div>
 </template>
