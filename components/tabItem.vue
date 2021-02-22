@@ -2,7 +2,10 @@
 	<div>
 		<div v-for="section of contents">
 			<event-section :src="section.backImage" :secClass="section.class">
-				<sub-img :src="section.subImg" />
+				<img
+					v-if="section.subImgYn"
+					:src="section.subImg"
+					:class="section.subImgClass" />
 				<btn v-if="section.btnYn" :btn-type="section.btnType"></btn>
 			</event-section>
 		</div>
@@ -15,9 +18,14 @@ import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class tabItem extends Vue {
-	@Prop({default: []}) contents: Object
+	@Prop({default: []}) contents!: object
 }
 </script>
 
 <style lang="scss" scoped>
+.ico-banner {
+	position: absolute;
+	bottom: 0;
+	left: 230px;
+}
 </style>

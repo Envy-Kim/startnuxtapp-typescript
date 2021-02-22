@@ -20,7 +20,7 @@
 			<v-img :src='event1Img2'></v-img>
 			<v-img :src='event1Img3'>
 				<div class='banner-img'>
-					<img src='~/assets/images_bak/event1/ico/ev1_ico_banner.png'>
+					<img src='~/assets/images_aj/event1/ico/ev1_ico_banner.png'>
 				</div>
 			</v-img>
 			<v-img :src='event1Img4'></v-img>
@@ -36,7 +36,7 @@
 			</v-img>
 			<v-img :src='event2Img4'>
 				<div class='banner-img'>
-					<img src='~/assets/images_bak/event2/ico/ev2_ico_banner.png'>
+					<img src='~/assets/images_aj/event2/ico/ev2_ico_banner.png'>
 				</div>
 			</v-img>
 			<v-img :src='event2FootImg'></v-img>
@@ -63,21 +63,21 @@ export default class index extends Vue {
 		}
 	]
 
-	event1TabImg: string = require('~/assets/images_bak/event1/ev1_tmp1.jpg')
-	event1Img1: string = require('~/assets/images_bak/event1/ev1_kv.jpg')
-	event1Img2: string = require('~/assets/images_bak/event1/ev1_step.jpg')
-	event1Img3: string = require('~/assets/images_bak/event1/ev1_tmp_banner.jpg')
-	event1Img4: string = require('~/assets/images_bak/event1/ev1_prize.jpg')
-	event1Img5: string = require('~/assets/images_bak/event1/ev1_join.jpg')
-	event1FootImg = require('~/assets/images_bak/event1/ev1_ft.jpg')
+	event1TabImg: string = require('~/assets/images_aj/event1/ev1_tmp1.jpg')
+	event1Img1: string = require('~/assets/images_aj/event1/ev1_kv.jpg')
+	event1Img2: string = require('~/assets/images_aj/event1/ev1_step.jpg')
+	event1Img3: string = require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')
+	event1Img4: string = require('~/assets/images_aj/event1/ev1_prize.jpg')
+	event1Img5: string = require('~/assets/images_aj/event1/ev1_join.jpg')
+	event1FootImg = require('~/assets/images_aj/event1/ev1_ft.jpg')
 
-	event2TabImg: string = require('~/assets/images_bak/event2/ev2_tmp2.jpg')
-	event2Img1: string = require('~/assets/images_bak/event2/ev2_kv.jpg')
-	event2Img2: string = require('~/assets/images_bak/event2/ev2_step.jpg')
-	event2Img3: string = require('~/assets/images_bak/event2/ev2_tmp1.jpg')
-	event2Img33: string = require('~/assets/images_bak/event2/ev2_tmp3.jpg')
-	event2Img4: string = require('~/assets/images_bak/event2/ev2_tmp_banner.jpg')
-	event2FootImg = require('~/assets/images_bak/event2/ev2_ft.jpg')
+	event2TabImg: string = require('~/assets/images_aj/event2/ev2_tmp2.jpg')
+	event2Img1: string = require('~/assets/images_aj/event2/ev2_kv.jpg')
+	event2Img2: string = require('~/assets/images_aj/event2/ev2_step.jpg')
+	event2Img3: string = require('~/assets/images_aj/event2/ev2_tmp1.jpg')
+	event2Img33: string = require('~/assets/images_aj/event2/ev2_tmp3.jpg')
+	event2Img4: string = require('~/assets/images_aj/event2/ev2_tmp_banner.jpg')
+	event2FootImg = require('~/assets/images_aj/event2/ev2_ft.jpg')
 
 	changeActiveTab(value: number) {
 		console.log(value)

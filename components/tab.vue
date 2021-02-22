@@ -4,7 +4,7 @@
 			<ul class='tab' >
 				<li v-for="item of items"
 					:class="{ 'on': active === item.name }"
-					@click="changeItem(item)"
+					@click="$emit('input', item.name)"
 				>
 					{{ item.title }}
 					<i class="point">{{ item.titlePoint }}</i>
@@ -14,8 +14,8 @@
 			</ul>
 		</div>
 
-		<div class='tab-item'>
-			<tab-item :contents='activeItem.contents'></tab-item>
+		<div v-for="(item) of items" class='tab-item'>
+			<tab-item v-if="(item.name == active)"  :contents='item.contents'></tab-item>
 		</div>
 	</div>
 </template>
@@ -27,18 +27,11 @@ import Component from "vue-class-component";
 
 @Component
 export default class tab extends Vue {
-	@Prop({default: []}) items?: Object
+	@Prop({default: []}) items?: any
 	@Prop() active!: string
-
-	activeItem: Object = this.items[0]
 
 	mounted() {
 		console.log(this.items)
-	}
-
-	changeItem(item) {
-		this.activeItem = item
-		this.$emit('input', item.name)
 	}
 }
 </script>

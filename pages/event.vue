@@ -21,16 +21,16 @@ export default class event extends Vue {
 
 	activeTab: string = 'event1'
 
-	event1Img1: string = require('~/assets/images_bak/event1/ev1_kv.jpg')
-	event1Img2: string = require('~/assets/images_bak/event1/ev1_step.jpg')
-	event1Img3: string = require('~/assets/images_bak/event1/ev1_tmp_banner.jpg')
-	event1Img4: string = require('~/assets/images_bak/event1/ev1_prize.jpg')
-	event1Img5: string = require('~/assets/images_bak/event1/ev1_join.jpg')
+	event1Img1: string = require('~/assets/images_aj/event1/ev1_kv.jpg')
+	event1Img2: string = require('~/assets/images_aj/event1/ev1_step.jpg')
+	event1Img3: string = require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')
+	event1Img4: string = require('~/assets/images_aj/event1/ev1_prize.jpg')
+	event1Img5: string = require('~/assets/images_aj/event1/ev1_join.jpg')
 
-	event2Img1: string = require('~/assets/images_bak/event2/ev2_kv.jpg')
-	event2Img2: string = require('~/assets/images_bak/event2/ev2_step.jpg')
-	event2Img3: string = require('~/assets/images_bak/event2/ev2_tmp1.jpg')
-	event2Img4: string = require('~/assets/images_bak/event2/ev2_tmp_banner.jpg')
+	event2Img1: string = require('~/assets/images_aj/event2/ev2_kv.jpg')
+	event2Img2: string = require('~/assets/images_aj/event2/ev2_step.jpg')
+	event2Img3: string = require('~/assets/images_aj/event2/ev2_tmp1.jpg')
+	event2Img4: string = require('~/assets/images_aj/event2/ev2_tmp_banner.jpg')
 
 	tabItems = [
 		{
