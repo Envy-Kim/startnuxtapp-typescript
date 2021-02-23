@@ -74,7 +74,7 @@
 						<template slot='sub-title'>
 							경품 발송시 연락드릴 연락처를 입력해주세요.
 							<i class='point'>한우 인증점 로고와
-								<span>{{ (applyType == 'examinee') ? '수험표가' : '영수증이' }}</span> 나온 이미지를 업로드 후,<br>
+								<span>{{ (event1Data.type == 'examinee') ? '수험표가' : '영수증이' }}</span> 나온 이미지를 업로드 후,<br>
 								개인정보를 남겨주셔야 이벤트 참여가 완료됩니다.
 							</i>
 						</template>
@@ -99,19 +99,19 @@
 							</div>
 
 							<event-input
-								type='text'
+								input-type='text'
 								id='name'
 								name='name'
 								v-model='event1Data.name'
 								placeholder="이름"/>
 							<event-input
-								type='text'
+								input-type='text'
 								id='phone'
 								name='phone'
 								v-model='event1Data.phone'
 								placeholder="전화번호"/>
 							<event-input
-								type='text'
+								input-type='text'
 								id='email'
 								name='email'
 								v-model='event1Data.email'
@@ -281,28 +281,38 @@ export default class MyTest extends Vue {
 	filename: string = ""
 
 	event1Data: Object = {
+		type: '',
 		name: '',
 		phone: '',
 		email: '',
-		certFile: {},
+		certFile: [],
 		aggrchk1: false,
 		aggrchk2: false
 	}
 
 
 	changeActiveTab(value: string) {
-		console.log(value)
 		this.activeTab = value
 	}
 
 	closeModal() {
+		this.event1Data = {
+			type: '',
+			name: '',
+			phone: '',
+			email: '',
+			certFile: [],
+			aggrchk1: false,
+			aggrchk2: false
+		}
+
 		this.evStep01On = false
 		this.evStep02On = false
 		this.evStep03On = false
 	}
 
 	selectApplyType(type: string) {
-		this.applyType = type
+		this.event1Data.type = type
 
 		this.evStep01On = false
 		this.evStep02On = true
@@ -312,9 +322,7 @@ export default class MyTest extends Vue {
 	event01Submit() {
 		console.log(this.event1Data)
 
-		this.evStep01On = false
-		this.evStep02On = false
-		this.evStep03On = true
+		this.closeModal()
 	}
 
 	setUploadFile(files: any) {
@@ -325,6 +333,9 @@ export default class MyTest extends Vue {
 			this.filename = files[0].name
 		}
 		this.event1Data.certFile = files
+	}
+
+	destroy() {
 	}
 }
 </script>
