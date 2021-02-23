@@ -14,7 +14,7 @@ import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class tabItem extends Vue {
+export default class TabItem extends Vue {
 	@Prop({default: []}) items?: object
 	@Prop() active!: string
 }

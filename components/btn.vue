@@ -1,10 +1,11 @@
 <template>
-	<div class='btn-box' :style="{'left':left, 'bottom':bottom}">
+	<div :style="{'left':left, 'bottom':bottom}">
 		<div v-if="btnType === 'default'">
 			<button >default</button>
 		</div>
 
-		<div v-if="btnType === 'detail-btn' || btnType === 'line-type'"  :class="btnType">
+		<div v-else-if="btnType === 'detail-btn' || btnType === 'line-type'"
+			 :class="[btnType, { 'on': (btnType === 'detail-btn' && on) }]">
 			<nuxt-link
 				:class="colorType"
 				:style="{'width' : width}"
@@ -13,22 +14,12 @@
 			</nuxt-link>
 		</div>
 
-		<div v-if="btnType === 'bg-type'" class="bg-type">
-			<div
-				v-if="funcType === 'file-btn'"
-				:class="funcType">
-				<label for="input-file"></label>
-				<input type="file" id="input-file">
-			</div>
-
-			<nuxt-link
-				v-else
-				:class="funcType"
-				:style="{'width' : width, 'height' : height}"
-				to="">
-				<p><slot/></p>
-			</nuxt-link>
-		</div>
+		<nuxt-link v-else
+			:class="btnType"
+			:style="{'width' : width, 'height' : height}"
+			to="">
+			<p><slot/></p>
+		</nuxt-link>
 	</div>
 </template>
 
@@ -38,15 +29,16 @@ import Component from "vue-class-component";
 import { Prop } from 'vue-property-decorator'
 
 @Component
-export default class btn extends Vue {
-	@Prop({default: 'default'}) btnType?: string;
-	@Prop({default: 'light-gray'}) colorType?: string;
-	@Prop({default: '100px'}) width?: string;
-	@Prop({default: '54px'}) height?: string;
-	@Prop({default: ''}) funcType?: string;
-	@Prop({default: '0'}) left?: string;
-	@Prop({default: '0'}) bottom?: string;
-
+export default class Btn extends Vue {
+	@Prop({default: true}) btnBoxYn?: boolean
+	@Prop({default: 'default'}) btnType?: string
+	@Prop({default: 'light-gray'}) colorType?: string
+	@Prop({default: '100px'}) width?: string
+	@Prop({default: '54px'}) height?: string
+	@Prop({default: ''}) funcType?: string
+	@Prop({default: '0'}) left?: string
+	@Prop({default: '0'}) bottom?: string
+	@Prop({default: false}) on?: boolean
 }
 </script>
 
@@ -184,6 +176,7 @@ export default class btn extends Vue {
 			background-color: #fffa6f;
 			p {
 				position: relative;
+				padding-right: 25px;
 				font-size: 34px;
 				color: #483d37;
 				&::after {
@@ -196,7 +189,7 @@ export default class btn extends Vue {
 					margin: auto;
 					width: 16px;
 					height: 26px;
-					background: url('/assets/images/tab01/btn_entry_arrow.png');
+					background: url('~@/assets/images/tab01/btn_entry_arrow.png');
 				}
 			}
 		}
@@ -219,7 +212,7 @@ export default class btn extends Vue {
 					margin: auto;
 					width: 23px;
 					height: 23px;
-					background: url('/assets/images/common/ico_add.png');
+					background: url('~@/assets/images/common/ico_add.png');
 				}
 			}
 		}
@@ -240,26 +233,9 @@ export default class btn extends Vue {
 					margin: auto;
 					width: 27px;
 					height: 26px;
-					background: url('/assets/images/common/ico_heart.png');
+					background: url('~@/assets/images/common/ico_heart.png');
 				}
 			}
-		}
-	}
-	.btn-file {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 60px;
-		height: 60px;
-		border-radius: 5px;
-		background-color: #bababa;
-		label {
-			width: 39px;
-			height: 39px;
-			background: url('/assets/images/common/ico_file.png') center no-repeat;
-		}
-		input {
-			display: none;
 		}
 	}
 }

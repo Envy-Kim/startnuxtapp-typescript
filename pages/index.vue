@@ -50,7 +50,7 @@ import Component from "vue-class-component";
 
 // @Component 데코레이터는 클래스가 Vue 컴포넌트임을 나타냅니다
 @Component
-export default class index extends Vue {
+export default class Index extends Vue {
 	activeTab: number = 1
 	activeTab2: string = 'event1'
 

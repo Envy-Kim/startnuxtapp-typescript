@@ -2,85 +2,242 @@
 	<div class='inner'>
 		<!-- tab -->
 		<tab
-			:items="tabItems"
-			:active="activeTab"
+			:items='tabItems'
+			:active='activeTab'
 			@input='changeActiveTab'
-		>
-			<tab-item :items='tabItems' :active="activeTab">
-				<!-- event1 -->
-				<template #event1_1>
-					<event-section :src="require('~/assets/images_aj/event1/ev1_kv.jpg')">
-					</event-section>
-				</template>
-				<template #event1_2>
-					<event-section :src="require('~/assets/images_aj/event1/ev1_step.jpg')">
-					</event-section>
-				</template>
-				<template #event1_3>
-					<event-section :src="require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')">
-						<img :src="require('~/assets/images_aj/event1/ico/ev1_ico_banner.png')"
-							 class="ico-banner" />
-						<btn btn-type='line-type'
-							 colorType='color-yellow'
-							 width='235px'
-							 left='420px'
-							 bottom='16px'
-						>내 주변 한우 인증점 보러가기</btn>
-					</event-section>
-				</template>
-				<template #event1_4>
-					<event-section :src="require('~/assets/images_aj/event1/ev1_prize.jpg')">
-					</event-section>
-				</template>
-				<template #event1_5>
-					<event-section :src="require('~/assets/images_aj/event1/ev1_join.jpg')">
-						<btn btn-type='bg-type'
-							 funcType='btn-entry'
-							 width='360px'
-							 left='330px'
-							 bottom='100px'
-							 @click.native='test'
-						>응모하기
-						</btn>
-					</event-section>
-				</template>
+		/>
 
-				<!-- event2 -->
-				<template #event2_1>
-					<event-section :src="require('~/assets/images_aj/event2/ev2_kv.jpg')">
-					</event-section>
-				</template>
-				<template #event2_2>
-					<event-section :src="require('~/assets/images_aj/event2/ev2_step.jpg')">
-					</event-section>
-				</template>
-				<template #event2_3>
-					<event-section :src="require('~/assets/images_aj/event2/ev2_tmp1.jpg')">
-					</event-section>
-				</template>
-				<template #event2_4>
-					<event-section :src="require('~/assets/images_aj/event2/ev2_tmp_banner.jpg')">
-						<btn btn-type='line-type'
-							 colorType='color-pink-white'
-							 width='235px'
-							 left='370px'
-							 bottom='16px'
-						>투표 현황 보러가기</btn>
-					</event-section>
-				</template>
-			</tab-item>
-		</tab>
+		<tab-item :items='tabItems' :active='activeTab'>
+			<!-- event1 Start -->
+			<template #event1_1>
+				<event-section :src="require('~/assets/images_aj/event1/ev1_kv.jpg')">
+				</event-section>
+			</template>
+
+			<template #event1_2>
+				<event-section :src="require('~/assets/images_aj/event1/ev1_step.jpg')">
+				</event-section>
+			</template>
+
+			<template #event1_3>
+				<event-section :src="require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')">
+					<img :src="require('~/assets/images_aj/event1/ico/ev1_ico_banner.png')"
+						 class='ico-banner' />
+					<btn class='btn-box'
+						 btn-type='line-type'
+						 colorType='color-yellow'
+						 width='235px'
+						 left='420px'
+						 bottom='16px'
+					>내 주변 한우 인증점 보러가기
+					</btn>
+				</event-section>
+			</template>
+
+			<template #event1_4>
+				<event-section :src="require('~/assets/images_aj/event1/ev1_prize.jpg')">
+				</event-section>
+			</template>
+
+			<template #event1_5>
+				<event-section :src="require('~/assets/images_aj/event1/ev1_join.jpg')">
+					<btn class='btn-box bg-type'
+						 btn-type='btn-entry'
+						 width='360px'
+						 left='330px'
+						 bottom='100px'
+						 @click.native='evStep01On = true'
+					>응모하기
+					</btn>
+
+					<!-- event1 응모 step1 modal-->
+					<event-modal v-if='evStep01On' @close='closeModal'>
+						<template #title>
+							한우먹고!<i class='point'>한우인증 Go~!</i>
+						</template>
+						<template slot='sub-title'>
+							수험생과 일반 참여 방법이 다릅니다!<br>참여 유형을 선택해주세요.
+						</template>
+						<template #content>
+							<ul class='select'>
+								<li @click="selectApplyType('examinee')">수험생으로 참여할꺼에요!</li>
+								<li @click="selectApplyType('public')">일반으로 참여할꺼에요!</li>
+							</ul>
+						</template>
+					</event-modal>
+
+					<!-- event1 응모 step2 modal-->
+					<event-modal v-if='evStep02On' @close='closeModal'>
+						<template #title>
+							한우먹고!<i class='point'>한우인증 Go~!</i>
+						</template>
+						<template slot='sub-title'>
+							경품 발송시 연락드릴 연락처를 입력해주세요.
+							<i class='point'>한우 인증점 로고와
+								<span>{{ (applyType == 'examinee') ? '수험표가' : '영수증이' }}</span> 나온 이미지를 업로드 후,<br>
+								개인정보를 남겨주셔야 이벤트 참여가 완료됩니다.
+							</i>
+						</template>
+						<template #content>
+							<form>
+							<div class='input-area'>
+								<div class="flex-box">
+									<event-input
+										id='cert_file_name'
+										placeholder="이미지는 한장만 업로드 가능합니다."
+										styleType='m-file'
+										:value='filename'
+										disabled=true
+									/>
+									<event-input input-type='file'
+												 id='cert_file'
+												 name='cert_file'
+												 @input='setUploadFile'
+									/>
+								</div>
+								<span class='info'>&#42; Jpg, Jpeg, Png 파일만 업로드 가능합니다.</span>
+							</div>
+
+							<event-input
+								type='text'
+								id='name'
+								name='name'
+								v-model='event1Data.name'
+								placeholder="이름"/>
+							<event-input
+								type='text'
+								id='phone'
+								name='phone'
+								v-model='event1Data.phone'
+								placeholder="전화번호"/>
+							<event-input
+								type='text'
+								id='email'
+								name='email'
+								v-model='event1Data.email'
+								placeholder="이메일"/>
+
+							<aggrement padding-left='40px'>
+								<template #checkbox>
+									<event-input
+										input-type='checkbox'
+										name="aggr1"
+										id="aggr1"
+										v-model='event1Data.aggrchk1' >
+										<i class="point">(필수)</i> 개인정보 활용 동의
+									</event-input>
+								</template>
+								<template #detail_btn_text>자세히보기</template>
+								<template #content>
+									<p>개인정보 수집 동의</p>
+									<p>
+										1. 수집 항목 : [필수] 이름, 전화번호, 이메일<br />
+										2. 수집 및 이용 목적 : 이벤트 참여<br />
+										3. 업무 위탁 제공처 : 한우자조금관리위원회 위탁 협력업체<br />
+										4. 보유 및 이용기간 : 해당 목적 달성 후 폐기
+									</p>
+								</template>
+							</aggrement>
+
+							<aggrement padding-left='20px'>
+								<template #checkbox>
+									<event-input
+										input-type='checkbox'
+										name="aggr2"
+										id="aggr2"
+										v-model='event1Data.aggrchk2' >
+										(선택) 마케팅 정보 수신 동의
+									</event-input>
+								</template>
+								<template #detail_btn_text>자세히보기</template>
+								<template #content>
+									<p>마케팅 정보 수신 동의</p>
+									<p>
+										1. 수집 항목 : 이벤트 참여자 이름, 전화번호, 이메일<br />
+										2. 수집 및 이용 목적 : 한우자조금관리위원회에서 진행하는 이벤트 및
+										프로모션 안내<br />
+										3. 업무 위탁 제공처 : 한우자조금관리위원회 위탁협력업체<br />
+										4. 보유 및 이용기간 : 위탁 목적 및 계약 종료시까지<br />
+										5. 동의 철회 방법 : 개인정보 보호 관리자 및 담당자에게 서면, 전화
+										또는 이메일 연락
+									</p>
+								</template>
+							</aggrement>
+
+							<btn class='bg-type confirm-btn'
+								 btn-type='btn-confirm'
+								 width='280px'
+								 @click.native='event01Submit'
+							>확 인
+							</btn>
+							</form>
+						</template>
+					</event-modal>
+
+					<!-- event1 응모 step3 modal-->
+					<event-modal v-if='evStep03On' @close='closeModal'>
+						<template #title>
+							한우먹고!<i class='point'>한우인증 Go~!</i>
+						</template>
+						<template slot='sub-title'>
+							이벤트 참여가 완료되었습니다.
+						</template>
+						<template #content>
+							<btn class='bg-type confirm-btn'
+								 btn-type='btn-confirm'
+								 width='280px'
+								 @click.native='closeModal'
+							>확 인
+							</btn>
+						</template>
+					</event-modal>
+				</event-section>
+			</template>
+			<!-- event1 End -->
+
+			<!-- event2 Start -->
+			<template #event2_1>
+				<event-section :src="require('~/assets/images_aj/event2/ev2_kv.jpg')">
+				</event-section>
+			</template>
+
+			<template #event2_2>
+				<event-section :src="require('~/assets/images_aj/event2/ev2_step.jpg')">
+				</event-section>
+			</template>
+
+			<template #event2_3>
+				<event-section :src="require('~/assets/images_aj/event2/ev2_tmp1.jpg')">
+				</event-section>
+			</template>
+
+			<template #event2_4>
+				<event-section :src="require('~/assets/images_aj/event2/ev2_tmp_banner.jpg')">
+					<img :src="require('~/assets/images_aj/event2/ico/ev2_ico_banner.png')"
+						 class='ico-banner' />
+					<btn class='btn-box'
+						 btn-type='line-type'
+						 colorType='color-pink-white'
+						 width='235px'
+						 left='370px'
+						 bottom='16px'
+					>투표 현황 보러가기
+					</btn>
+				</event-section>
+			</template>
+			<!-- event2 End -->
+		</tab-item>
 	</div>
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import Component from "vue-class-component";
+import Vue from 'vue'
+import Component from 'vue-class-component'
 
 @Component({
 	layout: 'event/index'
 })
-export default class myTest extends Vue {
+export default class MyTest extends Vue {
 
 	activeTab: string = 'event1'
 
@@ -93,11 +250,11 @@ export default class myTest extends Vue {
 			subTitle: '한우 먹고!',
 			subTitlePoint: '한우 인증 GO~!',
 			contents: [
-				{name: 'sec1'},
-				{name: 'sec2'},
-				{name: 'sec3'},
-				{name: 'sec4'},
-				{name: 'sec5'}
+				{ name: 'sec1' },
+				{ name: 'sec2' },
+				{ name: 'sec3' },
+				{ name: 'sec4' },
+				{ name: 'sec5' }
 			]
 		},
 		{
@@ -108,21 +265,66 @@ export default class myTest extends Vue {
 			subTitle: '최애 한우인증점 Pick!',
 			subTitlePoint: '',
 			contents: [
-				{name: 'sec1'},
-				{name: 'sec2'},
-				{name: 'sec3'},
-				{name: 'sec4'}
+				{ name: 'sec1' },
+				{ name: 'sec2' },
+				{ name: 'sec3' },
+				{ name: 'sec4' }
 			]
 		}
 	]
+
+	evStep01On: boolean = false
+	evStep02On: boolean = false
+	evStep03On: boolean = false
+	applyType: string = 'public'
+
+	filename: string = ""
+
+	event1Data: Object = {
+		name: '',
+		phone: '',
+		email: '',
+		certFile: {},
+		aggrchk1: false,
+		aggrchk2: false
+	}
 
 
 	changeActiveTab(value: string) {
 		console.log(value)
 		this.activeTab = value
 	}
-	test() {
-		alert('test')
+
+	closeModal() {
+		this.evStep01On = false
+		this.evStep02On = false
+		this.evStep03On = false
+	}
+
+	selectApplyType(type: string) {
+		this.applyType = type
+
+		this.evStep01On = false
+		this.evStep02On = true
+		this.evStep03On = false
+	}
+
+	event01Submit() {
+		console.log(this.event1Data)
+
+		this.evStep01On = false
+		this.evStep02On = false
+		this.evStep03On = true
+	}
+
+	setUploadFile(files: any) {
+		if (!files.length) {
+			this.filename = ""
+		}
+		else {
+			this.filename = files[0].name
+		}
+		this.event1Data.certFile = files
 	}
 }
 </script>

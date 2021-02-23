@@ -3,8 +3,31 @@ $yellow: #ffdb6f;
 $pink: #ff7878;
 $red: #f35959;
 $white: #fff;
-$lightGray: #999;
-$darkGray: #3e3e3e;
+$lightGray: #999; // $gray999
+$darkGray: #3e3e3e; // $gray3E
+
+$mainColor01: #ffdb6f;
+$mainColor02: #f48585;
+$mainBgColor02: #ffeaec;
+$subColor01: #fff3ca;
+$subColor01: #ffdfdf;
+$empColor01: #e57507;
+$empColor02: #e4584b;
+$mustColor: #c83030;
+$boxShodow02: #f6dbdd;
+$errorColor: #f0f;
+$txtColor: #3e2e2f;
+$subTxtColor01: #c86930;
+$subTxtColor02: #ff5f50;
+$black: #000;
+$gray333: #333;
+$gray555: #555;
+$gray666: #666;
+$grayCCC: #ccc;
+$grayB3: #b3b3b3;
+$grayD3: #d3d3d3;
+$grayF3: #f3f3f3;
+$grayE6: #e6e6e6;
 
 
 // clearfix
@@ -47,7 +70,7 @@ $darkGray: #3e3e3e;
 // font-weight
 @mixin fontWeight($w) {
 	font-weight: $w;
- 
+
 	@if $w==bold {
 		font-weight: 700;
 	}
@@ -55,7 +78,7 @@ $darkGray: #3e3e3e;
 	@else if $w==medium {
 		font-weight: 500;
 	}
- 
+
 	@else if $w==regular {
 		font-weight: 400;
 	}

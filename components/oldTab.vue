@@ -16,7 +16,7 @@ import { Prop } from 'vue-property-decorator'
 import Component from "vue-class-component";
 
 @Component
-export default class oldTab extends Vue {
+export default class OldTab extends Vue {
 	@Prop({default: []}) items?: Object
 	@Prop() active!: number
 
