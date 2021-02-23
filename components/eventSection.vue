@@ -1,6 +1,6 @@
 <template>
 	<div class="ev-section" :class="secClass" >
-		<img v-if="src != 'none'" :src="src" alt="" />
+		<img v-if="src !== '' " :src="src" alt="" />
 		<slot></slot>
 	</div>
 </template>
@@ -84,6 +84,7 @@ export default class EventSection extends Vue {
 .flex-box {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .input-area {

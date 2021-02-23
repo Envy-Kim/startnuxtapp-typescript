@@ -4,7 +4,8 @@
 		<tab
 			:items='tabItems'
 			:active='activeTab'
-			@input='changeActiveTab'
+			evClass='main-tab'
+			@input='changeMainTab'
 		/>
 
 		<tab-item :items='tabItems' :active='activeTab'>
@@ -50,6 +51,7 @@
 					>응모하기
 					</btn>
 
+					<!-- event1 응모 step1 modal-->
 					<event-modal v-if='evStep01On' @close='closeModal'>
 						<template #title>
 							한우먹고!<i class='point'>한우인증 Go~!</i>
@@ -65,6 +67,7 @@
 						</template>
 					</event-modal>
 
+					<!-- event1 응모 step2 modal-->
 					<event-modal v-if='evStep02On' @close='closeModal'>
 						<template #title>
 							한우먹고!<i class='point'>한우인증 Go~!</i>
@@ -72,32 +75,119 @@
 						<template slot='sub-title'>
 							경품 발송시 연락드릴 연락처를 입력해주세요.
 							<i class='point'>한우 인증점 로고와
-								<span>{{ (applyType == 'examinee') ? '수험표가' : '영수증이' }}</span> 나온 이미지를 업로드 후,<br>
+								<span>{{ (event1Data.type == 'examinee') ? '수험표가' : '영수증이' }}</span> 나온 이미지를 업로드 후,<br>
 								개인정보를 남겨주셔야 이벤트 참여가 완료됩니다.
 							</i>
 						</template>
 						<template #content>
-							<div class='input-area'>
-								<div class='flex-box'>
-									<vue-input
-										placeholder='이미지는 한장만 업로드 가능합니다.' />
+							<form>
+								<div class='input-area'>
+									<div class="flex-box">
+										<event-input
+											id='cert_file_name'
+											placeholder="이미지는 한장만 업로드 가능합니다."
+											styleType='m-file'
+											:value='filename'
+											disabled=true
+										/>
+										<event-input input-type='file'
+													 id='cert_file'
+													 name='cert_file'
+													 @input='setUploadFile'
+										/>
+									</div>
+									<span class='info'>&#42; Jpg, Jpeg, Png 파일만 업로드 가능합니다.</span>
 								</div>
-								<span class='info'>&#42; Jpg, Jpeg, Png 파일만 업로드 가능합니다.</span>
-							</div>
-							<vue-input
-								placeholder='이름' />
-							<vue-input
-								placeholder='전화번호' />
-							<vue-input
-								placeholder='이메일' />
 
-							<vue-agreement><i class='point'>(필수)</i> 개인정보 활용 동의</vue-agreement>
-							<vue-agreement>(선택) 마케팅 정보 수신 동의</vue-agreement>
+								<event-input
+									input-type='text'
+									id='name'
+									name='name'
+									v-model='event1Data.name'
+									placeholder="이름"/>
+								<event-input
+									input-type='text'
+									id='phone'
+									name='phone'
+									v-model='event1Data.phone'
+									placeholder="전화번호"/>
+								<event-input
+									input-type='text'
+									id='email'
+									name='email'
+									v-model='event1Data.email'
+									placeholder="이메일"/>
 
+								<aggrement padding-left='40px'>
+									<template #checkbox>
+										<event-input
+											input-type='checkbox'
+											name="aggr1"
+											id="aggr1"
+											v-model='event1Data.aggrchk1' >
+											<i class="point">(필수)</i> 개인정보 활용 동의
+										</event-input>
+									</template>
+									<template #detail_btn_text>자세히보기</template>
+									<template #content>
+										<p>개인정보 수집 동의</p>
+										<p>
+											1. 수집 항목 : [필수] 이름, 전화번호, 이메일<br />
+											2. 수집 및 이용 목적 : 이벤트 참여<br />
+											3. 업무 위탁 제공처 : 한우자조금관리위원회 위탁 협력업체<br />
+											4. 보유 및 이용기간 : 해당 목적 달성 후 폐기
+										</p>
+									</template>
+								</aggrement>
+
+								<aggrement padding-left='20px'>
+									<template #checkbox>
+										<event-input
+											input-type='checkbox'
+											name="aggr2"
+											id="aggr2"
+											v-model='event1Data.aggrchk2' >
+											(선택) 마케팅 정보 수신 동의
+										</event-input>
+									</template>
+									<template #detail_btn_text>자세히보기</template>
+									<template #content>
+										<p>마케팅 정보 수신 동의</p>
+										<p>
+											1. 수집 항목 : 이벤트 참여자 이름, 전화번호, 이메일<br />
+											2. 수집 및 이용 목적 : 한우자조금관리위원회에서 진행하는 이벤트 및
+											프로모션 안내<br />
+											3. 업무 위탁 제공처 : 한우자조금관리위원회 위탁협력업체<br />
+											4. 보유 및 이용기간 : 위탁 목적 및 계약 종료시까지<br />
+											5. 동의 철회 방법 : 개인정보 보호 관리자 및 담당자에게 서면, 전화
+											또는 이메일 연락
+										</p>
+									</template>
+								</aggrement>
+
+								<btn class='bg-type confirm-btn'
+									 btn-type='btn-confirm'
+									 width='280px'
+									 @click.native='event01Submit'
+								>확 인
+								</btn>
+							</form>
+						</template>
+					</event-modal>
+
+					<!-- event1 응모 step3 modal-->
+					<event-modal v-if='evStep03On' @close='closeModal'>
+						<template #title>
+							한우먹고!<i class='point'>한우인증 Go~!</i>
+						</template>
+						<template slot='sub-title'>
+							이벤트 참여가 완료되었습니다.
+						</template>
+						<template #content>
 							<btn class='bg-type confirm-btn'
 								 btn-type='btn-confirm'
 								 width='280px'
-								 @click.native='event01Submit'
+								 @click.native='closeModal'
 							>확 인
 							</btn>
 						</template>
@@ -118,7 +208,25 @@
 			</template>
 
 			<template #event2_3>
-				<event-section :src="require('~/assets/images_aj/event2/ev2_tmp1.jpg')">
+				<event-section class='ev2-bg-color'>
+					<tab
+						:items='areaTabItem'
+						:active='areaActiveTab'
+						class='list-wrap'
+						evClass='area-tab'
+						@input='changeAreaTab'
+					/>
+					<tab-item :items='areaTabItem'
+							  :active='areaActiveTab'
+							  class='list-wrap'>
+						<template #area1_1>area1</template>
+						<template #area2_1>area2</template>
+						<template #area3_1>area3</template>
+						<template #area4_1>area4</template>
+						<template #area5_1>area5</template>
+						<template #area6_1>area6</template>
+						<template #area7_1>area7</template>
+					</tab-item>
 				</event-section>
 			</template>
 
@@ -150,12 +258,12 @@ import Component from 'vue-class-component'
 })
 export default class Event extends Vue {
 
-	activeTab: string = 'event1'
+	activeTab: number = 1
 
 	tabItems: object = [
 		{
 			name: 'event1',
-			tabType: 'text',
+			tabKey: 0,
 			title: '',
 			titlePoint: 'event1.',
 			subTitle: '한우 먹고!',
@@ -170,7 +278,7 @@ export default class Event extends Vue {
 		},
 		{
 			name: 'event2',
-			tabType: 'text',
+			tabKey: 1,
 			title: '',
 			titlePoint: 'event2.',
 			subTitle: '최애 한우인증점 Pick!',
@@ -189,20 +297,92 @@ export default class Event extends Vue {
 	evStep03On: boolean = false
 	applyType: string = 'public'
 
+	filename: string = ""
 
-	changeActiveTab(value: string) {
-		console.log(value)
+	event1Data: Object = {
+		type: '',
+		name: '',
+		phone: '',
+		email: '',
+		certFile: [],
+		aggrchk1: false,
+		aggrchk2: false
+	}
+
+	areaTabItem: object = [
+		{
+			name: 'area1',
+			tabKey: 1,
+			title: '전국',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area2',
+			tabKey: 2,
+			title: '수도권',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area3',
+			tabKey: 3,
+			title: '충청도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area4',
+			tabKey: 4,
+			title: '전라도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area5',
+			tabKey: 5,
+			title: '경상도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area6',
+			tabKey: 6,
+			title: '강원도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area7',
+			tabKey: 7,
+			title: '제주도',
+			contents: [{ name: 'sec1' }]
+		}
+	]
+
+	areaActiveTab: number = 1
+
+
+	changeMainTab(value: number) {
 		this.activeTab = value
+	}
+	changeAreaTab(value: number) {
+		this.areaActiveTab = value
 	}
 
 	closeModal() {
+		this.event1Data = {
+			type: '',
+			name: '',
+			phone: '',
+			email: '',
+			certFile: [],
+			aggrchk1: false,
+			aggrchk2: false
+		}
+		this.filename = ''
+
 		this.evStep01On = false
 		this.evStep02On = false
 		this.evStep03On = false
 	}
 
 	selectApplyType(type: string) {
-		this.applyType = type
+		this.event1Data.type = type
 
 		this.evStep01On = false
 		this.evStep02On = true
@@ -210,16 +390,31 @@ export default class Event extends Vue {
 	}
 
 	event01Submit() {
-		this.evStep01On = false
-		this.evStep02On = false
-		this.evStep03On = true
+		console.log(this.event1Data)
+
+		this.closeModal()
+	}
+
+	setUploadFile(files: any) {
+		if (!files.length) {
+			this.filename = ""
+		}
+		else {
+			this.filename = files[0].name
+		}
+		this.event1Data.certFile = files
 	}
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 .inner {
 	max-width: 1024px;
 	margin: 0 auto;
+
+	.list-wrap {
+		padding: 0 55px 60px 55px;
+	}
 }
+
 </style>

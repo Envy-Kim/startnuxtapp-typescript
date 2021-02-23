@@ -4,7 +4,8 @@
 		<tab
 			:items='tabItems'
 			:active='activeTab'
-			@input='changeActiveTab'
+			evClass='main-tab'
+			@input='changeMainTab'
 		/>
 
 		<tab-item :items='tabItems' :active='activeTab'>
@@ -207,7 +208,25 @@
 			</template>
 
 			<template #event2_3>
-				<event-section :src="require('~/assets/images_aj/event2/ev2_tmp1.jpg')">
+				<event-section class='ev2-bg-color'>
+					<tab
+						:items='areaTabItem'
+						:active='areaActiveTab'
+						class='list-wrap'
+						evClass='area-tab'
+						@input='changeAreaTab'
+					/>
+					<tab-item :items='areaTabItem'
+							  :active='areaActiveTab'
+							  class='list-wrap'>
+						<template #area1_1>area1</template>
+						<template #area2_1>area2</template>
+						<template #area3_1>area3</template>
+						<template #area4_1>area4</template>
+						<template #area5_1>area5</template>
+						<template #area6_1>area6</template>
+						<template #area7_1>area7</template>
+					</tab-item>
 				</event-section>
 			</template>
 
@@ -239,12 +258,12 @@ import Component from 'vue-class-component'
 })
 export default class MyTest extends Vue {
 
-	activeTab: string = 'event1'
+	activeTab: number = 1
 
 	tabItems: object = [
 		{
 			name: 'event1',
-			tabType: 'text',
+			tabKey: 0,
 			title: '',
 			titlePoint: 'event1.',
 			subTitle: '한우 먹고!',
@@ -259,7 +278,7 @@ export default class MyTest extends Vue {
 		},
 		{
 			name: 'event2',
-			tabType: 'text',
+			tabKey: 1,
 			title: '',
 			titlePoint: 'event2.',
 			subTitle: '최애 한우인증점 Pick!',
@@ -290,9 +309,59 @@ export default class MyTest extends Vue {
 		aggrchk2: false
 	}
 
+	areaTabItem: object = [
+		{
+			name: 'area1',
+			tabKey: 1,
+			title: '전국',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area2',
+			tabKey: 2,
+			title: '수도권',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area3',
+			tabKey: 3,
+			title: '충청도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area4',
+			tabKey: 4,
+			title: '전라도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area5',
+			tabKey: 5,
+			title: '경상도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area6',
+			tabKey: 6,
+			title: '강원도',
+			contents: [{ name: 'sec1' }]
+		},
+		{
+			name: 'area7',
+			tabKey: 7,
+			title: '제주도',
+			contents: [{ name: 'sec1' }]
+		}
+	]
 
-	changeActiveTab(value: string) {
+	areaActiveTab: number = 1
+
+
+	changeMainTab(value: number) {
 		this.activeTab = value
+	}
+	changeAreaTab(value: number) {
+		this.areaActiveTab = value
 	}
 
 	closeModal() {
@@ -305,6 +374,7 @@ export default class MyTest extends Vue {
 			aggrchk1: false,
 			aggrchk2: false
 		}
+		this.filename = ''
 
 		this.evStep01On = false
 		this.evStep02On = false
@@ -334,15 +404,17 @@ export default class MyTest extends Vue {
 		}
 		this.event1Data.certFile = files
 	}
-
-	destroy() {
-	}
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 .inner {
 	max-width: 1024px;
 	margin: 0 auto;
+
+	.list-wrap {
+		padding: 0 55px 60px 55px;
+	}
 }
+
 </style>
