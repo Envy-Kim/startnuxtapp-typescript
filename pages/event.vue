@@ -219,12 +219,22 @@
 					<tab-item :items='areaTabItem'
 							  :active='areaActiveTab'
 							  class='list-wrap'>
-						<template #area1_1>area1</template>
+						<!-- 전국 -->
+						<template #area1_1>
+							area1
+							<card>card area</card>
+						</template>
+						<!-- 수도권 -->
 						<template #area2_1>area2</template>
+						<!-- 충청도 -->
 						<template #area3_1>area3</template>
+						<!-- 전라도 -->
 						<template #area4_1>area4</template>
+						<!-- 경상도 -->
 						<template #area5_1>area5</template>
+						<!-- 강원도 -->
 						<template #area6_1>area6</template>
+						<!-- 제주도 -->
 						<template #area7_1>area7</template>
 					</tab-item>
 				</event-section>
@@ -253,6 +263,16 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
+export interface eventData {
+	type: string,
+	name: string,
+	phone: string,
+	email: string,
+	certFile: object,
+	aggrchk1: boolean,
+	aggrchk2: boolean
+}
+
 @Component({
 	layout: 'event/index'
 })
@@ -260,7 +280,7 @@ export default class Event extends Vue {
 
 	activeTab: number = 1
 
-	tabItems: object = [
+	tabItems: object[] = [
 		{
 			name: 'event1',
 			tabKey: 0,
@@ -299,17 +319,17 @@ export default class Event extends Vue {
 
 	filename: string = ""
 
-	event1Data: Object = {
+	event1Data: eventData = {
 		type: '',
 		name: '',
 		phone: '',
 		email: '',
-		certFile: [],
+		certFile: {},
 		aggrchk1: false,
 		aggrchk2: false
 	}
 
-	areaTabItem: object = [
+	areaTabItem: object[] = [
 		{
 			name: 'area1',
 			tabKey: 1,
