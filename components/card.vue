@@ -1,7 +1,11 @@
 <template>
-	<div class='card'>
+	<div class='card' :style="{'width':width, 'height': height}">
 		<nuxt-link to="">
 			<img v-if="img !== ''" :src="img" alt="">
+
+			<div class="info">
+				<slot />
+			</div>
 		</nuxt-link>
 	</div>
 </template>
@@ -13,6 +17,8 @@ import { Component, Prop } from 'vue-property-decorator'
 @Component
 export default class Card extends Vue{
 	@Prop({default: ''}) img?: string
+	@Prop({default: '270px'}) width?: string
+	@Prop({default: '310px'}) height?: string
 
 }
 </script>
@@ -22,9 +28,7 @@ export default class Card extends Vue{
 @import "@/assets/scss/mixin";
 
 .card {
-	width: 270px;
-	height: 310px;
-	margin-bottom: 25px;
+	margin: 0 auto;
 	border-radius: 30px;
 	background-color: #fff;
 	box-shadow: 5px 5px 0 rgba(246,218,220);
@@ -40,14 +44,6 @@ export default class Card extends Vue{
 		align-items: flex-end;
 		height: 130px;
 		padding: 20px 15px;
-		p {
-			align-self: stretch;
-			width: 100%;
-			font-size: 22px;
-			margin-left: 10px;
-			color: #3e2e2f;
-			font-weight: bold;
-		}
 	}
 }
 

@@ -221,21 +221,79 @@
 							  class='list-wrap'>
 						<!-- 전국 -->
 						<template #area1_1>
-							area1
-							<card>card area</card>
+							<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >
+								<card-title>세종한우</card-title>
+								<btn btn-type='line-type'
+									 colorType='color-pink'
+									 width='235px'
+								>컨텐츠보고 투표 GO</btn>
+							</card>
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
 						</template>
 						<!-- 수도권 -->
-						<template #area2_1>area2</template>
+						<template #area2_1>
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 충청도 -->
-						<template #area3_1>area3</template>
+						<template #area3_1>
+							area3
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 전라도 -->
-						<template #area4_1>area4</template>
+						<template #area4_1>
+							area4
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 경상도 -->
-						<template #area5_1>area5</template>
+						<template #area5_1>
+							area5
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 강원도 -->
-						<template #area6_1>area6</template>
+						<template #area6_1>
+							area6
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 제주도 -->
-						<template #area7_1>area7</template>
+						<template #area7_1>
+							area7
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 					</tab-item>
 				</event-section>
 			</template>
@@ -263,7 +321,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-export interface eventData {
+export interface event1Data {
 	type: string,
 	name: string,
 	phone: string,
@@ -274,12 +332,11 @@ export interface eventData {
 }
 
 @Component({
-	layout: 'event/index'
+	layout: 'event'
 })
 export default class MyTest extends Vue {
 
 	activeTab: number = 1
-
 	tabItems: object[] = [
 		{
 			name: 'event1',
@@ -317,9 +374,7 @@ export default class MyTest extends Vue {
 	evStep03On: boolean = false
 	applyType: string = 'public'
 
-	filename: string = ""
-
-	event1Data: eventData = {
+	event1Data: event1Data = {
 		type: '',
 		name: '',
 		phone: '',
@@ -329,6 +384,9 @@ export default class MyTest extends Vue {
 		aggrchk2: false
 	}
 
+	filename: string = ""
+
+	areaActiveTab: number = 1
 	areaTabItem: object[] = [
 		{
 			name: 'area1',
@@ -373,9 +431,6 @@ export default class MyTest extends Vue {
 			contents: [{ name: 'sec1' }]
 		}
 	]
-
-	areaActiveTab: number = 1
-
 
 	changeMainTab(value: number) {
 		this.activeTab = value

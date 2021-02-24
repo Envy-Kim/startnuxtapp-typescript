@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import EventFooter from "~/layouts/event/eventFooter";
+import EventFooter from "~/components/eventFooter";
 export default {
 	components: {EventFooter}
 }

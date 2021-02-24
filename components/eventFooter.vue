@@ -1,5 +1,5 @@
 <template>
-	<div class="footer">
+	<footer class="footer">
 		<div class="wrap">
 			<p>이벤트 유의사항</p>
 			<ul>
@@ -8,12 +8,15 @@
 				<li>- 불법적인 경로 또는 비정상적인 참여 시 당첨에서 제외되며, 당첨자 발표 이후 당첨이 취소될 수 있습니다</li>
 			</ul>
 		</div>
-	</div>
+	</footer>
 </template>
 
-<script>
-export default {
-name: "eventFooter"
+<script lang='ts'>
+import Vue from 'vue'
+import {Component} from 'vue-property-decorator'
+
+@Component
+export default class EventFooter extends Vue {
 }
 </script>
 

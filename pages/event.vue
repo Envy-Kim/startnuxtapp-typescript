@@ -274,7 +274,7 @@ export interface eventData {
 }
 
 @Component({
-	layout: 'event/index'
+	layout: 'event'
 })
 export default class Event extends Vue {
 

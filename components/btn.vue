@@ -30,7 +30,6 @@ import { Prop } from 'vue-property-decorator'
 
 @Component
 export default class Btn extends Vue {
-	@Prop({default: true}) btnBoxYn?: boolean
 	@Prop({default: 'default'}) btnType?: string
 	@Prop({default: 'light-gray'}) colorType?: string
 	@Prop({default: '100px'}) width?: string
@@ -103,6 +102,19 @@ export default class Btn extends Vue {
 				}
 			}
 		}
+		&:hover {
+			&.color-pink {
+				background-color: #e4584b;
+				p {
+					color: white;
+					&::after {
+						border-top: 2px solid $white;
+						border-right: 2px solid $white;
+					}
+				}
+			}
+		}
+
 	}
 }
 
