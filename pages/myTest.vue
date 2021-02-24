@@ -237,12 +237,16 @@
 						</template>
 						<!-- 수도권 -->
 						<template #area2_1>
+							<grid :items='cardList'
+								  max-row='2'
+								  max-col='3' />
 
 							<btn btn-type='btn-more'
 								 class='bg-type'
 								 width='360px'
 								 height='64px'
-							>인증점 더보기</btn>
+							>인증점 더보기
+							</btn>
 						</template>
 						<!-- 충청도 -->
 						<template #area3_1>
@@ -430,6 +434,54 @@ export default class MyTest extends Vue {
 			title: '제주도',
 			contents: [{ name: 'sec1' }]
 		}
+	]
+
+	cardList: object[] = [
+		{
+			index: 1,
+			title: '늘푸름 홍천 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum02.jpg'),
+		},
+		{
+			index: 2,
+			title: '세종 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum02.jpg'),
+		},
+		{
+			index: 3,
+			title: '모심정',
+			img: require('~/assets/images_aj/event2/store/store_thum03.png'),
+		},
+		{
+			index: 4,
+			title: '농업회사법인초원(주)안양지점',
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
+		},
+		{
+			index: 5,
+			title: '다한우',
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
+		},
+		{
+			index: 6,
+			title: '끼리 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
+		},
+		{
+			index: 7,
+			title: '농업회사법인(주)포천한우백년',
+			img: require('~/assets/images_aj/event2/store/store_thum07.png'),
+		},
+		{
+			index: 8,
+			title: '강화섬약쑥한우',
+			img: require('~/assets/images_aj/event2/store/store_thum08.png'),
+		},
+		{
+			index: 9,
+			title: '늘푸름 홍천 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum09.jpg'),
+		},
 	]
 
 	changeMainTab(value: number) {
