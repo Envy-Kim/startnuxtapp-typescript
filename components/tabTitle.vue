@@ -1,11 +1,12 @@
 <template>
-	<div class='tabs'>
-		<ul class='tab' :class='evClass'>
-			<template v-for="item of items">
-				<slot name="title" :item='item'></slot>
-			</template>
-		</ul>
-	</div>
+	<li	:class="{ 'on': active === item.tabKey }"
+		@click="$emit('input', item.tabKey)"
+	>
+		{{ item.title }}
+		<i class="point">{{ item.titlePoint }}</i>
+		{{ item.subTitle }}
+		<i class="point" v-if="item.subTitlePoint">{{ item.subTitlePoint }}</i>
+	</li>
 </template>
 
 <script lang='ts'>
@@ -14,9 +15,8 @@ import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Tab extends Vue {
-	@Prop({default: []}) items?: object
+	@Prop({default: []}) item?: object
 	@Prop({default: 0}) active!: number
-	@Prop({default: ''}) evClass?: string
 }
 </script>
 

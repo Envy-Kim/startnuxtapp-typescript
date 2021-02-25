@@ -221,21 +221,70 @@
 							  class='list-wrap'>
 						<!-- 전국 -->
 						<template #area1_1>
-							area1
-							<card>card area</card>
+							<grid :items='storeList' />
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
 						</template>
 						<!-- 수도권 -->
-						<template #area2_1>area2</template>
+						<template #area2_1>
+							<grid :items='storeList'
+								  max-row='2'
+								  max-col='3' />
+						</template>
 						<!-- 충청도 -->
-						<template #area3_1>area3</template>
+						<template #area3_1>
+							area3
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 전라도 -->
-						<template #area4_1>area4</template>
+						<template #area4_1>
+							area4
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 경상도 -->
-						<template #area5_1>area5</template>
+						<template #area5_1>
+							area5
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 강원도 -->
-						<template #area6_1>area6</template>
+						<template #area6_1>
+							area6
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 						<!-- 제주도 -->
-						<template #area7_1>area7</template>
+						<template #area7_1>
+							area7
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+							>인증점 더보기</btn>
+						</template>
 					</tab-item>
 				</event-section>
 			</template>
@@ -263,7 +312,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-export interface eventData {
+export interface event1Data {
 	type: string,
 	name: string,
 	phone: string,
@@ -279,7 +328,6 @@ export interface eventData {
 export default class Event extends Vue {
 
 	activeTab: number = 1
-
 	tabItems: object[] = [
 		{
 			name: 'event1',
@@ -317,9 +365,7 @@ export default class Event extends Vue {
 	evStep03On: boolean = false
 	applyType: string = 'public'
 
-	filename: string = ""
-
-	event1Data: eventData = {
+	event1Data: event1Data = {
 		type: '',
 		name: '',
 		phone: '',
@@ -329,6 +375,9 @@ export default class Event extends Vue {
 		aggrchk2: false
 	}
 
+	filename: string = ""
+
+	areaActiveTab: number = 1
 	areaTabItem: object[] = [
 		{
 			name: 'area1',
@@ -374,8 +423,53 @@ export default class Event extends Vue {
 		}
 	]
 
-	areaActiveTab: number = 1
-
+	storeList: object[] = [
+		{
+			index: 1,
+			title: '늘푸름 홍천 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum02.jpg'),
+		},
+		{
+			index: 2,
+			title: '세종 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum02.jpg'),
+		},
+		{
+			index: 3,
+			title: '모심정',
+			img: require('~/assets/images_aj/event2/store/store_thum03.png'),
+		},
+		{
+			index: 4,
+			title: '농업회사법인초원(주)안양지점',
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
+		},
+		{
+			index: 5,
+			title: '다한우',
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
+		},
+		{
+			index: 6,
+			title: '끼리 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
+		},
+		{
+			index: 7,
+			title: '농업회사법인(주)포천한우백년',
+			img: require('~/assets/images_aj/event2/store/store_thum07.png'),
+		},
+		{
+			index: 8,
+			title: '강화섬약쑥한우',
+			img: require('~/assets/images_aj/event2/store/store_thum08.png'),
+		},
+		{
+			index: 9,
+			title: '늘푸름 홍천 한우',
+			img: require('~/assets/images_aj/event2/store/store_thum09.jpg'),
+		},
+	]
 
 	changeMainTab(value: number) {
 		this.activeTab = value
