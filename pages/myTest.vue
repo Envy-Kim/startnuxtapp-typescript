@@ -231,7 +231,21 @@
 								<template #area1='{item}'>
 									<!-- tab-item -->
 									<tab-item :item='item' :active='areaActiveTab'>
-										<grid :items='storeList' />
+										<grid :items='storeList' >
+											<template #content='{item}'>
+												<card
+													:img="item.img"
+													width='270px'
+													@click.native='openModal(item)'
+												>
+													<card-title>{{ item.title }}</card-title>
+													<btn btn-type='line-type'
+														 colorType='color-pink'
+														 width='235px'
+													>컨텐츠보고 투표 GO</btn>
+												</card>
+											</template>
+										</grid>
 									</tab-item>
 								</template>
 
@@ -294,7 +308,30 @@
 									내 마음 속의 <i class='point'>최애 한우인증점 Pick!</i>
 								</template>
 								<template #content>
-									{{ storeList[0].title }}
+									{{ evStore.title }}
+									<div class="bottom-area">
+										<p class="store-p">보고 계시는 한우 인증점이 마음에 든다면 좋은 이유를 댓글로 적고,<br><i class="point">♥ 좋아요 투표</i>버튼을 눌러주세요.</p>
+										<div class="input-area">
+											<div class='flex-box'>
+												<event-input
+													input-type='text'
+													styleType='line-input'
+													name='comment'
+													id='comment'
+													placeholder='좋은 이유를 입력해주세요! (30자 이내)'
+													v-model='event2Data.comment'
+												/>
+												<btn class='bg-type'
+													 width='110px'
+													 height='60px'
+													 btnType='btn-vote'
+													@click.native='updateComment'
+												>
+													투표
+												</btn>
+											</div>
+										</div>
+									</div>
 								</template>
 							</event-modal>
 
@@ -661,6 +698,7 @@ export default class MyTest extends Vue {
 			img: require('~/assets/images_aj/event2/store/store_thum09.jpg')
 		}
 	]
+	evStore: object
 
 	changeMainTab(value: number) {
 		this.activeTab = value
@@ -721,6 +759,18 @@ export default class MyTest extends Vue {
 			this.filename = files[0].name
 		}
 		this.event1Data.certFile = files
+	}
+
+	openModal(item: any) {
+		this.evStep01On = true
+
+		this.evStore = item
+	}
+
+	updateComment() {
+		this.evStep01On = false
+		this.evStep02On = true
+		this.evStep03On = false
 	}
 
 	setEventAge(age: number) {

@@ -1,25 +1,14 @@
 <template>
-	<!--
-	todo : component와 슬롯에 대해 조금 더 고민 후 수정
-	-->
 	<ul>
 		<li v-for="(item, index) of items" :key='item.index' >
-			<card
-				:img="item.img"
-				width='270px'>
-				<card-title>{{ item.title }}</card-title>
-				<btn btn-type='line-type'
-					 colorType='color-pink'
-					 width='235px'
-				>컨텐츠보고 투표 GO</btn>
-			</card>
+			<slot name='content' :item='item' />
 		</li>
 	</ul>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue'
-import {Component, Prop} from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Grid extends Vue {
