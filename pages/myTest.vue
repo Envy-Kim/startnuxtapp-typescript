@@ -1,17 +1,16 @@
 <template>
 	<div class='inner'>
 		<!-- tab -->
-		<tab
-			:items='tabItems'
+		<tabs :items='tabItems'
 			:active='activeTab'
 			evClass='main-tab'
-			@input='changeMainTab'
 		>
-			<template #title >
-					<tab-title></tab-title>
+			<template #title="{item, active}" >
+				<tab :item="item" :active="active"
+						   @input='changeMainTab'
+				></tab>
 			</template>
-		</tab>
-
+		</tabs>
 	</div>
 </template>
 
@@ -38,7 +37,7 @@ export default class MyTest extends Vue {
 	tabItems: object[] = [
 		{
 			name: 'event1',
-			tabKey: 0,
+			key: 0,
 			title: '',
 			titlePoint: 'event1.',
 			subTitle: '한우 먹고!',
@@ -53,7 +52,7 @@ export default class MyTest extends Vue {
 		},
 		{
 			name: 'event2',
-			tabKey: 1,
+			key: 1,
 			title: '',
 			titlePoint: 'event2.',
 			subTitle: '최애 한우인증점 Pick!',
@@ -179,6 +178,7 @@ export default class MyTest extends Vue {
 	]
 
 	changeMainTab(value: number) {
+		console.log('ttt')
 		this.activeTab = value
 	}
 	changeAreaTab(value: number) {
