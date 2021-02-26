@@ -24,12 +24,10 @@
 				<!-- tab-item -->
 				<tab-item :item='item' :active='activeTab'>
 					<!-- section1_1 -->
-					<event-section :src="require('~/assets/images_aj/event1/ev1_kv.jpg')">
-					</event-section>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_kv.jpg')" />
 
 					<!-- section1_2 -->
-					<event-section :src="require('~/assets/images_aj/event1/ev1_step.jpg')">
-					</event-section>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_step.jpg')" />
 
 					<!-- section1_3 -->
 					<event-section :src="require('~/assets/images_aj/event1/ev1_tmp_banner.jpg')">
@@ -46,8 +44,7 @@
 					</event-section>
 
 					<!-- section1_4 -->
-					<event-section :src="require('~/assets/images_aj/event1/ev1_prize.jpg')">
-					</event-section>
+					<event-section :src="require('~/assets/images_aj/event1/ev1_prize.jpg')" />
 
 					<!-- section1_5 -->
 					<event-section :src="require('~/assets/images_aj/event1/ev1_join.jpg')">
@@ -132,9 +129,9 @@
 										<template #checkbox>
 											<event-input
 												input-type='checkbox'
-												name='aggr1'
-												id='aggr1'
-												v-model='event1Data.aggrchk1'>
+												name='ev1AggrChk1'
+												id='ev1AggrChk1'
+												v-model='event1Data.ev1AggrChk1'>
 												<i class='point'>(필수)</i> 개인정보 활용 동의
 											</event-input>
 										</template>
@@ -154,9 +151,9 @@
 										<template #checkbox>
 											<event-input
 												input-type='checkbox'
-												name='aggr2'
-												id='aggr2'
-												v-model='event1Data.aggrchk2'>
+												name='ev1AggrChk2'
+												id='ev1AggrChk2'
+												v-model='event1Data.ev1AggrChk2'>
 												(선택) 마케팅 정보 수신 동의
 											</event-input>
 										</template>
@@ -210,105 +207,264 @@
 				<!-- tab-item -->
 				<tab-item :item='item' :active='activeTab'>
 					<!-- section2_1 -->
-					<event-section :src="require('~/assets/images_aj/event2/ev2_kv.jpg')">
-					</event-section>
+					<event-section :src="require('~/assets/images_aj/event2/ev2_kv.jpg')" />
 
 					<!-- section2_2 -->
-					<event-section :src="require('~/assets/images_aj/event2/ev2_step.jpg')">
-					</event-section>
+					<event-section :src="require('~/assets/images_aj/event2/ev2_step.jpg')" />
 
 					<!-- section2_3 -->
 					<event-section class='ev2-bg-color'>
-						<tabs :items='areaTabItem'
-							  :active='areaActiveTab'
-							  class='list-wrap'
-							  evClass='area-tab'
-						>
-							<template #title='{item, active}'>
-								<!-- tab -->
-								<tab :item='item' :active='active'
-									 @input='changeAreaTab'
-								></tab>
-							</template>
-						</tabs>
-
-
-						<tab-item :items='areaTabItem'
+						<div class='list-wrap'>
+							<!-- tabs -->
+							<tabs :items='areaTabItem'
 								  :active='areaActiveTab'
-								  class='list-wrap'>
-							<!-- 전국 -->
-							<template #area1_1>
-								<grid :items='storeList' />
+								  evClass='area-tab'
+							>
+								<template #title='{item, active}'>
+									<!-- tab -->
+									<tab :item='item' :active='active' @input='changeAreaTab' />
+								</template>
+							</tabs>
 
-								<btn btn-type='btn-more'
-									 class='bg-type'
-									 width='360px'
-									 height='64px'
-								>인증점 더보기
-								</btn>
-							</template>
-							<!-- 수도권 -->
-							<template #area2_1>
-								<grid :items='storeList'
-									  max-row='2'
-									  max-col='3' />
-							</template>
-							<!-- 충청도 -->
-							<template #area3_1>
-								area3
+							<!-- tab-items -->
+							<tab-items :items='areaTabItem' :active='areaActiveTab'>
+								<template #area1='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										<grid :items='storeList' />
+									</tab-item>
+								</template>
 
-								<btn btn-type='btn-more'
-									 class='bg-type'
-									 width='360px'
-									 height='64px'
-								>인증점 더보기
-								</btn>
-							</template>
-							<!-- 전라도 -->
-							<template #area4_1>
-								area4
+								<template #area2='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										<grid :items='storeList' />
+									</tab-item>
+								</template>
 
-								<btn btn-type='btn-more'
-									 class='bg-type'
-									 width='360px'
-									 height='64px'
-								>인증점 더보기
-								</btn>
-							</template>
-							<!-- 경상도 -->
-							<template #area5_1>
-								area5
+								<template #area3='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										{{ item }}
+									</tab-item>
+								</template>
 
-								<btn btn-type='btn-more'
-									 class='bg-type'
-									 width='360px'
-									 height='64px'
-								>인증점 더보기
-								</btn>
-							</template>
-							<!-- 강원도 -->
-							<template #area6_1>
-								area6
+								<template #area4='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										{{ item }}
+									</tab-item>
+								</template>
 
-								<btn btn-type='btn-more'
-									 class='bg-type'
-									 width='360px'
-									 height='64px'
-								>인증점 더보기
-								</btn>
-							</template>
-							<!-- 제주도 -->
-							<template #area7_1>
-								area7
+								<template #area5='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										{{ item }}
+									</tab-item>
+								</template>
 
-								<btn btn-type='btn-more'
-									 class='bg-type'
-									 width='360px'
-									 height='64px'
-								>인증점 더보기
-								</btn>
-							</template>
-						</tab-item>
+								<template #area6='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										{{ item }}
+									</tab-item>
+								</template>
+
+								<template #area7='{item}'>
+									<!-- tab-item -->
+									<tab-item :item='item' :active='areaActiveTab'>
+										{{ item }}
+									</tab-item>
+								</template>
+							</tab-items>
+
+							<btn btn-type='btn-more'
+								 class='bg-type'
+								 width='360px'
+								 height='64px'
+								 @click.native='evStep02On = true'
+							>인증점 더보기
+							</btn>
+
+							<!-- event2 투표 step1 modal-->
+							<event-modal v-if='evStep01On'
+										 color-type='modal-pink'
+										 @close='closeModal'>
+								<template #title>
+									내 마음 속의 <i class='point'>최애 한우인증점 Pick!</i>
+								</template>
+								<template #content>
+									{{ storeList[0].title }}
+								</template>
+							</event-modal>
+
+							<!-- event2 투표 step2 modal-->
+							<event-modal v-if='evStep02On'
+										 color-type='modal-pink'
+										 @close='closeModal'>
+								<template #title>
+									내 마음 속의 <i class='point'>최애 한우인증점 Pick!</i>
+								</template>
+								<template slot='sub-title'>
+									경품 발송시 연락드릴 연락처를 입력해주세요.
+									<i class='point'>개인정보를 입력하시면 이벤트 참여가 완료됩니다.</i>
+								</template>
+								<template #content>
+									<form>
+
+										<div class='input-area'>
+											<div class='flex-box'>
+												<event-input
+													input-type='radio'
+													class='age-radio'
+													id='radio1'
+													name='radio'
+													value='10'
+													@input='setEventAge'
+												>
+													10대
+												</event-input>
+												<event-input
+													input-type='radio'
+													class='age-radio'
+													id='radio2'
+													name='radio'
+													value='20'
+													@input='setEventAge'
+												>
+													20대
+												</event-input>
+												<event-input
+													input-type='radio'
+													class='age-radio'
+													id='radio3'
+													name='radio'
+													value='30'
+													@input='setEventAge'
+												>
+													30대
+												</event-input>
+												<event-input
+													input-type='radio'
+													class='age-radio'
+													id='radio4'
+													name='radio'
+													value='40'
+													@input='setEventAge'
+												>
+													40대
+												</event-input>
+												<event-input
+													input-type='radio'
+													class='age-radio'
+													id='radio5'
+													name='radio'
+													value='50'
+													@input='setEventAge'
+												>
+													50대
+												</event-input>
+											</div>
+										</div>
+
+
+										<event-input
+											input-type='text'
+											id='name'
+											name='name'
+											v-model='event2Data.name'
+											placeholder='이름' />
+										<event-input
+											input-type='text'
+											id='phone'
+											name='phone'
+											v-model='event2Data.phone'
+											placeholder='전화번호' />
+										<event-input
+											input-type='text'
+											id='email'
+											name='email'
+											v-model='event2Data.email'
+											placeholder='이메일' />
+
+										<aggrement padding-left='40px'>
+											<template #checkbox>
+												<event-input
+													input-type='checkbox'
+													name='ev2AggrChk1'
+													id='ev2AggrChk1'
+													v-model='event2Data.ev2AggrChk1'>
+													<i class='point'>(필수)</i> 개인정보 활용 동의
+												</event-input>
+											</template>
+											<template #detail_btn_text>자세히보기</template>
+											<template #content>
+												<p>개인정보 수집 동의</p>
+												<p>
+													1. 수집 항목 : [필수] 이름, 전화번호, 이메일<br />
+													2. 수집 및 이용 목적 : 이벤트 참여<br />
+													3. 업무 위탁 제공처 : 한우자조금관리위원회 위탁 협력업체<br />
+													4. 보유 및 이용기간 : 해당 목적 달성 후 폐기
+												</p>
+											</template>
+										</aggrement>
+
+										<aggrement padding-left='20px'>
+											<template #checkbox>
+												<event-input
+													input-type='checkbox'
+													name='ev2AggrChk2'
+													id='ev2AggrChk2'
+													v-model='event2Data.ev2AggrChk2'>
+													(선택) 마케팅 정보 수신 동의
+												</event-input>
+											</template>
+											<template #detail_btn_text>자세히보기</template>
+											<template #content>
+												<p>마케팅 정보 수신 동의</p>
+												<p>
+													1. 수집 항목 : 이벤트 참여자 이름, 전화번호, 이메일<br />
+													2. 수집 및 이용 목적 : 한우자조금관리위원회에서 진행하는 이벤트 및
+													프로모션 안내<br />
+													3. 업무 위탁 제공처 : 한우자조금관리위원회 위탁협력업체<br />
+													4. 보유 및 이용기간 : 위탁 목적 및 계약 종료시까지<br />
+													5. 동의 철회 방법 : 개인정보 보호 관리자 및 담당자에게 서면, 전화
+													또는 이메일 연락
+												</p>
+											</template>
+										</aggrement>
+
+										<btn class='bg-type confirm-btn'
+											 btn-type='btn-confirm'
+											 width='280px'
+											 @click.native='event02Submit'
+										>확 인
+										</btn>
+									</form>
+								</template>
+							</event-modal>
+
+							<!-- event2 투표 step3 modal-->
+							<event-modal v-if='evStep03On'
+										 color-type='modal-pink'
+										 @close='closeModal'>
+								<template #title>
+									내 마음 속의 <i class='point'>최애 한우인증점 Pick!</i>
+								</template>
+								<template slot='sub-title'>
+									이벤트 참여가 완료되었습니다.
+									<i class='point'>내일 다시 응모가 가능합니다.</i>
+								</template>
+								<template #content>
+									<btn class='bg-type confirm-btn'
+										 btn-type='btn-confirm'
+										 width='280px'
+										 @click.native='closeModal'
+									>확 인
+									</btn>
+								</template>
+							</event-modal>
+						</div>
 					</event-section>
 
 					<!-- section2_4 -->
@@ -346,8 +502,19 @@ export interface event1Data {
 	phone: string,
 	email: string,
 	certFile: object,
-	aggrchk1: boolean,
-	aggrchk2: boolean
+	ev1AggrChk1: boolean,
+	ev1AggrChk2: boolean
+}
+
+export interface event2Data {
+	age: number,
+	name: string,
+	phone: string,
+	email: string,
+	comment: string,
+	voteStore: number,
+	ev2AggrChk1: boolean,
+	ev2AggrChk2: boolean
 }
 
 /*
@@ -360,7 +527,7 @@ export interface event1Data {
 })
 export default class Index extends Vue {
 
-	activeTab: number = 0
+	activeTab: number = 1
 	tabItems: object[] = [
 		{
 			name: 'event1',
@@ -391,8 +558,19 @@ export default class Index extends Vue {
 		phone: '',
 		email: '',
 		certFile: {},
-		aggrchk1: false,
-		aggrchk2: false
+		ev1AggrChk1: false,
+		ev1AggrChk2: false
+	}
+
+	event2Data: event2Data = {
+		age: 0,
+		name: '',
+		phone: '',
+		email: '',
+		comment: '',
+		voteStore: 0,
+		ev2AggrChk1: false,
+		ev2AggrChk2: false
 	}
 
 	filename: string = ''
@@ -402,44 +580,37 @@ export default class Index extends Vue {
 		{
 			name: 'area1',
 			key: 1,
-			title: '전국',
-			contents: [{ name: 'sec1' }]
+			title: '전국'
 		},
 		{
 			name: 'area2',
 			key: 2,
-			title: '수도권',
-			contents: [{ name: 'sec1' }]
+			title: '수도권'
 		},
 		{
 			name: 'area3',
 			key: 3,
-			title: '충청도',
-			contents: [{ name: 'sec1' }]
+			title: '충청도'
 		},
 		{
 			name: 'area4',
 			key: 4,
-			title: '전라도',
-			contents: [{ name: 'sec1' }]
+			title: '전라도'
 		},
 		{
 			name: 'area5',
 			key: 5,
-			title: '경상도',
-			contents: [{ name: 'sec1' }]
+			title: '경상도'
 		},
 		{
 			name: 'area6',
 			key: 6,
-			title: '강원도',
-			contents: [{ name: 'sec1' }]
+			title: '강원도'
 		},
 		{
 			name: 'area7',
 			key: 7,
-			title: '제주도',
-			contents: [{ name: 'sec1' }]
+			title: '제주도'
 		}
 	]
 
@@ -492,7 +663,6 @@ export default class Index extends Vue {
 	]
 
 	changeMainTab(value: number) {
-		console.log('ttt')
 		this.activeTab = value
 	}
 
@@ -507,10 +677,21 @@ export default class Index extends Vue {
 			phone: '',
 			email: '',
 			certFile: [],
-			aggrchk1: false,
-			aggrchk2: false
+			ev1AggrChk1: false,
+			ev1AggrChk2: false
 		}
 		this.filename = ''
+
+		this.event2Data = {
+			age: 0,
+			name: '',
+			phone: '',
+			email: '',
+			comment: '',
+			voteStore: 0,
+			ev2AggrChk1: false,
+			ev2AggrChk2: false
+		}
 
 		this.evStep01On = false
 		this.evStep02On = false
@@ -528,7 +709,9 @@ export default class Index extends Vue {
 	event01Submit() {
 		console.log(this.event1Data)
 
-		this.closeModal()
+		this.evStep01On = false
+		this.evStep02On = false
+		this.evStep03On = true
 	}
 
 	setUploadFile(files: any) {
@@ -538,6 +721,18 @@ export default class Index extends Vue {
 			this.filename = files[0].name
 		}
 		this.event1Data.certFile = files
+	}
+
+	setEventAge(age: number) {
+		this.event2Data.age = age
+	}
+
+	event02Submit() {
+		console.log(this.event2Data)
+
+		this.evStep01On = false
+		this.evStep02On = false
+		this.evStep03On = true
 	}
 }
 </script>

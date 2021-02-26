@@ -49,7 +49,7 @@ export default class Tabs extends Vue {
 		height: 60px;
 		border-radius: 30px;
 		box-shadow: 5px 5px 0 rgba(0,0,0,.1);
-		padding-bottom: 60px;
+		margin-bottom: 60px;
 	}
 }
 </style>

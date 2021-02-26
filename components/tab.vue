@@ -1,6 +1,8 @@
 <template>
-	<li	:class="{ 'on': active === item.key }"
-		@click="$emit('input', item.key)" >
+	<li class='tab'
+		:class="{ 'on': active === item.key }"
+		@click="$emit('input', item.key)"
+	>
 		{{ item.title }}
 		<i class="point">{{ item.titlePoint }}</i>
 		{{ item.subTitle }}

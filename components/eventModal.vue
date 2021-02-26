@@ -66,6 +66,12 @@ export default class EventModal extends Vue{
 		width: 640px;
 		z-index: 9999;
 
+
+		&.modal-yellow {
+			.modal-head {
+				background-color: #ffe362;
+			}
+		}
 		&.modal-pink {
 			.modal-head {
 				background-color: #ffdfdf;
@@ -85,7 +91,6 @@ export default class EventModal extends Vue{
 			justify-content: center;
 			align-items: center;
 			border-radius: 30px 30px 0 0;
-			background-color: #ffe362;
 			p {
 				font-size: 42px;
 				font-family: 'BMJUA';

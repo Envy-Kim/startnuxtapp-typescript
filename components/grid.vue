@@ -15,61 +15,6 @@
 			</card>
 		</li>
 	</ul>
-<!--		<li>-->
-<!--			<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >-->
-<!--				<card-title>세종한우</card-title>-->
-<!--				<btn btn-type='line-type'-->
-<!--					 colorType='color-pink'-->
-<!--					 width='235px'-->
-<!--				>컨텐츠보고 투표 GO</btn>-->
-<!--			</card>-->
-<!--		</li>-->
-<!--		<li>-->
-<!--			<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >-->
-<!--				<card-title>세종한우</card-title>-->
-<!--				<btn btn-type='line-type'-->
-<!--					 colorType='color-pink'-->
-<!--					 width='235px'-->
-<!--				>컨텐츠보고 투표 GO</btn>-->
-<!--			</card>-->
-<!--		</li>-->
-<!--		<li>-->
-<!--			<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >-->
-<!--				<card-title>세종한우</card-title>-->
-<!--				<btn btn-type='line-type'-->
-<!--					 colorType='color-pink'-->
-<!--					 width='235px'-->
-<!--				>컨텐츠보고 투표 GO</btn>-->
-<!--			</card>-->
-<!--		</li>-->
-<!--		<li>-->
-<!--			<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >-->
-<!--				<card-title>세종한우</card-title>-->
-<!--				<btn btn-type='line-type'-->
-<!--					 colorType='color-pink'-->
-<!--					 width='235px'-->
-<!--				>컨텐츠보고 투표 GO</btn>-->
-<!--			</card>-->
-<!--		</li>-->
-<!--		<li>-->
-<!--			<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >-->
-<!--				<card-title>세종한우</card-title>-->
-<!--				<btn btn-type='line-type'-->
-<!--					 colorType='color-pink'-->
-<!--					 width='235px'-->
-<!--				>컨텐츠보고 투표 GO</btn>-->
-<!--			</card>-->
-<!--		</li>-->
-<!--		<li>-->
-<!--			<card :img="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >-->
-<!--				<card-title>세종한우</card-title>-->
-<!--				<btn btn-type='line-type'-->
-<!--					 colorType='color-pink'-->
-<!--					 width='235px'-->
-<!--				>컨텐츠보고 투표 GO</btn>-->
-<!--			</card>-->
-<!--		</li>-->
-<!--	</ul>-->
 </template>
 
 <script lang='ts'>

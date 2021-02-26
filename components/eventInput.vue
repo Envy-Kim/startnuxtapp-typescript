@@ -10,6 +10,7 @@
 			:value="value"
 			:disabled='disabled'
 			:readonly='readonly'
+			:checked="checked"
 			@input="change"
 		>
 
@@ -24,13 +25,14 @@ import {Component, Prop} from "vue-property-decorator";
 @Component
 export default class EventInput extends Vue {
 
-	@Prop ({default: 'text'}) inputType?:		string
+	@Prop ({default: 'text'}) inputType?:	string
 	@Prop ({default: ''}) name?:			string
 	@Prop ({default: ''}) id?:				string
 	@Prop ({default: ''}) placeholder?: 	string
 	@Prop ({default: ''}) value?:			string
 	@Prop ({default: false}) disabled?:		boolean
 	@Prop ({default: false}) readonly?:		boolean
+	@Prop ({default: false}) checked?:		boolean
 	@Prop ({default: ''}) styleType?:		string
 
 	isLabelLeft(): boolean {
@@ -50,8 +52,7 @@ export default class EventInput extends Vue {
 		} else if(this.inputType === 'file') {
 			let files = $event.target.files || $event.dataTransfer.files
 			this.$emit('input', files)
-		}
-		else {
+		} else {
 			this.$emit('input', $event.target.value)
 		}
 	}
@@ -154,4 +155,24 @@ export default class EventInput extends Vue {
 }
 
 .m-file{ margin-right: 15px; }
+
+.radio {
+	&.age-radio {
+		margin: 0 auto;
+
+		label {
+			display: inline-block;
+			width: 100px;
+			height: 50px;
+			font-size: 20px;
+			line-height: 50px;
+			text-align: center;
+			border: 1px solid #b3b3b3;
+		}
+		:checked + label {
+			color: $white;
+			background-color: $darkGray;
+		}
+	}
+}
 </style>
