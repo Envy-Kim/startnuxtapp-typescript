@@ -309,29 +309,39 @@
 								</template>
 								<template #content>
 									{{ evStore.title }}
-									<div class="bottom-area">
-										<p class="store-p">보고 계시는 한우 인증점이 마음에 든다면 좋은 이유를 댓글로 적고,<br><i class="point">♥ 좋아요 투표</i>버튼을 눌러주세요.</p>
-										<div class="input-area">
-											<div class='flex-box'>
-												<event-input
-													input-type='text'
-													styleType='line-input'
-													name='comment'
-													id='comment'
-													placeholder='좋은 이유를 입력해주세요! (30자 이내)'
-													v-model='event2Data.comment'
-												/>
-												<btn class='bg-type'
-													 width='110px'
-													 height='60px'
-													 btnType='btn-vote'
-													@click.native='updateComment'
-												>
-													투표
-												</btn>
-											</div>
-										</div>
-									</div>
+									<store-info>
+										가게 정보
+										<template #list>
+											<swiper
+												:slides-per-view="3"
+												:space-between="50"
+											>
+												<swiper-slide>Slide 1</swiper-slide>
+												<swiper-slide>Slide 2</swiper-slide>
+												<swiper-slide>Slide 3</swiper-slide>
+											</swiper>
+										</template>
+										<template #vote>
+											<event-input
+												input-type='text'
+												styleType='line-input'
+												name='comment'
+												id='comment'
+												placeholder='좋은 이유를 입력해주세요! (30자 이내)'
+												v-model='event2Data.comment'
+											/>
+											<btn class='bg-type'
+												 width='110px'
+												 height='60px'
+												 btnType='btn-vote'
+												 @click.native='voteStore'
+											>
+												투표
+											</btn>
+										</template>
+									</store-info>
+									<list>Comment List</list>
+									<pagenate>이전 1 2 3 4 5 다음</pagenate>
 								</template>
 							</event-modal>
 
@@ -532,6 +542,7 @@ import Vue from 'vue'
 // vuejs에서 typescript로 개발할 때, 클래스 컴포넌트 스타일의 개발을 도와주는 데코레이터들을 제공해주는 모듈
 // @Component, @Prop, @Watch 등이 있음
 import { Component } from 'vue-property-decorator'
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export interface event1Data {
 	type: string,
@@ -698,7 +709,7 @@ export default class MyTest extends Vue {
 			img: require('~/assets/images_aj/event2/store/store_thum09.jpg')
 		}
 	]
-	evStore: object
+	evStore: any
 
 	changeMainTab(value: number) {
 		this.activeTab = value
@@ -709,27 +720,7 @@ export default class MyTest extends Vue {
 	}
 
 	closeModal() {
-		this.event1Data = {
-			type: '',
-			name: '',
-			phone: '',
-			email: '',
-			certFile: [],
-			ev1AggrChk1: false,
-			ev1AggrChk2: false
-		}
-		this.filename = ''
-
-		this.event2Data = {
-			age: 0,
-			name: '',
-			phone: '',
-			email: '',
-			comment: '',
-			voteStore: 0,
-			ev2AggrChk1: false,
-			ev2AggrChk2: false
-		}
+		this.resetEventData()
 
 		this.evStep01On = false
 		this.evStep02On = false
@@ -746,6 +737,8 @@ export default class MyTest extends Vue {
 
 	event01Submit() {
 		console.log(this.event1Data)
+
+		this.resetEventData()
 
 		this.evStep01On = false
 		this.evStep02On = false
@@ -767,7 +760,9 @@ export default class MyTest extends Vue {
 		this.evStore = item
 	}
 
-	updateComment() {
+	voteStore() {
+		this.event2Data.voteStore = this.evStore.index
+
 		this.evStep01On = false
 		this.evStep02On = true
 		this.evStep03On = false
@@ -780,9 +775,36 @@ export default class MyTest extends Vue {
 	event02Submit() {
 		console.log(this.event2Data)
 
+		this.resetEventData()
+
 		this.evStep01On = false
 		this.evStep02On = false
 		this.evStep03On = true
+	}
+
+	resetEventData() {
+		this.event1Data = {
+			type: '',
+			name: '',
+			phone: '',
+			email: '',
+			certFile: [],
+			ev1AggrChk1: false,
+			ev1AggrChk2: false
+		}
+		this.filename = ''
+
+		this.event2Data = {
+			age: 0,
+			name: '',
+			phone: '',
+			email: '',
+			comment: '',
+			voteStore: 0,
+			ev2AggrChk1: false,
+			ev2AggrChk2: false
+		}
+		this.evStore = {}
 	}
 }
 </script>
