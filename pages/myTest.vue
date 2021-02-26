@@ -1,11 +1,17 @@
 <template>
 	<div class='inner'>
-		<!-- tab -->
+		<!-- tabs -->
 		<tabs :items='tabItems'
 			:active='activeTab'
 			evClass='main-tab'
 		>
+			<!--
+			슬롯 속성(slotProps)
+			부모 컴포넌트에서 자식 컴포넌트의 슬롯에
+			바인딩된 데이터에 접근하기 위하여 사용
+			-->
 			<template #title="{item, active}" >
+				<!-- tab -->
 				<tab :item="item" :active="active"
 						   @input='changeMainTab'
 				></tab>

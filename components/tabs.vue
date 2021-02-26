@@ -2,6 +2,11 @@
 	<div class='tabs'>
 		<ul class='tab' :class='evClass'>
 			<template v-for="item of items">
+				<!--
+				범위가 있는 슬롯(Scoped Slots)
+				자식 컴포넌트에서만 접근할 수 있는 데이터 중
+				부모 컴포넌트의 슬롯에서 필요한 데이터를 제어, 랜더링하기 위해 사용.
+				-->
 				<slot name="title" :item='item' :active='active' />
 			</template>
 		</ul>
