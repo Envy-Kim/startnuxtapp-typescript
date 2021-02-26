@@ -1,11 +1,6 @@
 <template>
-	<div>
-		<div v-for="(item) of items">
-			<div v-for="(section, index) of item.contents">
-				<slot v-if="(item.tabKey === active)"
-					  :name="item.name + '_' + (index+1)" />
-			</div>
-		</div>
+	<div v-show="item.key === active">
+		<slot />
 	</div>
 </template>
 
@@ -15,15 +10,10 @@ import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class TabItem extends Vue {
-	@Prop({default: []}) items?: object
+	@Prop({default: []}) item?: object
 	@Prop() active!: number
 }
 </script>
 
 <style lang="scss" scoped>
-.ico-banner {
-	position: absolute;
-	bottom: 0;
-	left: 230px;
-}
 </style>
