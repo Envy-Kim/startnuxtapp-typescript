@@ -313,33 +313,46 @@
 										가게 정보
 										<template #list>
 											<swiper
-												:slides-per-view="3"
-												:space-between="50"
+											:options='swiperOption'
 											>
-												<swiper-slide>Slide 1</swiper-slide>
-												<swiper-slide>Slide 2</swiper-slide>
-												<swiper-slide>Slide 3</swiper-slide>
+												<swiper-slide>
+													<img :src="require('~/assets/images_aj/event2/store/tmp_store_main.png')" >
+												</swiper-slide>
+												<swiper-slide>
+													<img :src="require('~/assets/images_aj/event2/store/store_thum02.jpg')" >
+												</swiper-slide>
+												<swiper-slide>
+													<img :src="require('~/assets/images_aj/event2/store/store_thum03.png')" >
+												</swiper-slide>
 											</swiper>
+											<div class="swiper-button-prev" slot="button-prev"></div>
+											<div class="swiper-button-next" slot="button-next"></div>
 										</template>
 										<template #vote>
-											<event-input
-												input-type='text'
-												styleType='line-input'
-												name='comment'
-												id='comment'
-												placeholder='좋은 이유를 입력해주세요! (30자 이내)'
-												v-model='event2Data.comment'
-											/>
-											<btn class='bg-type'
-												 width='110px'
-												 height='60px'
-												 btnType='btn-vote'
-												 @click.native='voteStore'
-											>
-												투표
-											</btn>
+											<p class="store-p">보고 계시는 한우 인증점이 마음에 든다면 좋은 이유를 댓글로 적고,<br><i class="point">♥ 좋아요 투표</i>버튼을 눌러주세요.</p>
+											<div class='input-area'>
+												<div class='flex-box'>
+													<event-input
+														input-type='text'
+														styleType='line-input'
+														name='comment'
+														id='comment'
+														placeholder='좋은 이유를 입력해주세요! (30자 이내)'
+														v-model='event2Data.comment'
+													/>
+													<btn class='bg-type'
+														 width='110px'
+														 height='60px'
+														 btnType='btn-vote'
+														 @click.native='voteStore'
+													>
+														투표
+													</btn>
+												</div>
+											</div>
 										</template>
 									</store-info>
+
 									<list>Comment List</list>
 									<pagenate>이전 1 2 3 4 5 다음</pagenate>
 								</template>
@@ -542,7 +555,6 @@ import Vue from 'vue'
 // vuejs에서 typescript로 개발할 때, 클래스 컴포넌트 스타일의 개발을 도와주는 데코레이터들을 제공해주는 모듈
 // @Component, @Prop, @Watch 등이 있음
 import { Component } from 'vue-property-decorator'
-import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export interface event1Data {
 	type: string,
@@ -666,50 +678,60 @@ export default class MyTest extends Vue {
 		{
 			index: 1,
 			title: '늘푸름 홍천 한우',
-			img: require('~/assets/images_aj/event2/store/store_thum02.jpg')
+			img: require('~/assets/images_aj/event2/store/store_thum02.jpg'),
 		},
 		{
 			index: 2,
 			title: '세종 한우',
-			img: require('~/assets/images_aj/event2/store/store_thum02.jpg')
+			img: require('~/assets/images_aj/event2/store/store_thum02.jpg'),
 		},
 		{
 			index: 3,
 			title: '모심정',
-			img: require('~/assets/images_aj/event2/store/store_thum03.png')
+			img: require('~/assets/images_aj/event2/store/store_thum03.png'),
 		},
 		{
 			index: 4,
 			title: '농업회사법인초원(주)안양지점',
-			img: require('~/assets/images_aj/event2/store/store_thum04.png')
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
 		},
 		{
 			index: 5,
 			title: '다한우',
-			img: require('~/assets/images_aj/event2/store/store_thum04.png')
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
 		},
 		{
 			index: 6,
 			title: '끼리 한우',
-			img: require('~/assets/images_aj/event2/store/store_thum04.png')
+			img: require('~/assets/images_aj/event2/store/store_thum04.png'),
 		},
 		{
 			index: 7,
 			title: '농업회사법인(주)포천한우백년',
-			img: require('~/assets/images_aj/event2/store/store_thum07.png')
+			img: require('~/assets/images_aj/event2/store/store_thum07.png'),
 		},
 		{
 			index: 8,
 			title: '강화섬약쑥한우',
-			img: require('~/assets/images_aj/event2/store/store_thum08.png')
+			img: require('~/assets/images_aj/event2/store/store_thum08.png'),
 		},
 		{
 			index: 9,
 			title: '늘푸름 홍천 한우',
-			img: require('~/assets/images_aj/event2/store/store_thum09.jpg')
+			img: require('~/assets/images_aj/event2/store/store_thum09.jpg'),
 		}
 	]
 	evStore: any
+
+	swiperOption: any = {
+		loop: true,
+		slidesPerView: 1,
+		spaceBetween: 30,
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	}
 
 	changeMainTab(value: number) {
 		this.activeTab = value

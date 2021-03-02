@@ -3,11 +3,7 @@
 		가게정보
 		<slot name='list' />
 
-		<div class='input-area'>
-			<div class='flex-box'>
-				<slot name='vote' />
-			</div>
-		</div>
+		<slot name='vote' />
 	</div>
 </template>
 
@@ -28,6 +24,16 @@ export default class StoreInfo extends Vue {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+}
+
+.store-p {
+	margin: 17px 0;
+	line-height: 24px;
+	font-size: 18px;
+	.point {
+		color: #ff5f50;
+		font-weight: 500;
 	}
 }
 </style>

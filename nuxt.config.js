@@ -59,7 +59,7 @@ export default {
 	 * 글로벌 플로그인 로드
 	 */
 	plugins: [
-		//{ src: '@/plugins/swiper.ts', mode: 'client' }
+		{ src: '@/plugins/swiper.ts', mode: 'client' }
 	],
 
 	components: true,
